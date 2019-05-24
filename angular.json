@@ -27,7 +27,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/lib/tailwind.min.css",
+              "src/lib/bootstrap-grid.min.css"
             ],
             "scripts": []
           },

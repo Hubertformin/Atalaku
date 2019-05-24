@@ -1,0 +1,33 @@
+#overlay {
+    width: 100%;
+    height: 100vh;
+    background: url('../../../assets/images/bg.jpg') no-repeat center fixed;
+    background-size: cover;
+}
+.intro {
+  background-color: rgba(0,0,0, 0.12);
+  .title {
+    font-size: 4rem;
+  }
+}
+.intro_rows{
+  border-top: 1.1px solid #dddddd;
+  padding: 2.85rem 1.75rem;
+}
+.pricing_plan {
+  background: linear-gradient(to bottom, #f70f09, #f79999);
+  padding: 2.5rem 1.5rem;
+  height: 250px;
+}
+.pictures {
+  margin: 1rem 0;
+  .pic {
+    &:nth-of-type(2), &:nth-of-type(3) {
+      padding-left: 0!important;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

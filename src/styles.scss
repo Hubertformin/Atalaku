@@ -24,15 +24,22 @@ $nudle-default-theme: mat-light-theme($nudle-default-primary, $nudle-default-acc
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($nudle-default-theme);
+//
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+// Theme
+@import "app/theme/theme";
 
 html, body {
     line-height: 1.5;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     font-weight: normal;
-    color: rgb(255, 255, 255);
+    // color: rgb(255, 255, 255);
+    color: rgba( 0, 0, 0, 0.8);
     width: 100%;
     height: 100%;
-    background-color: rgb(4, 4, 4);
+    // background-color: rgb(4, 4, 4);
+    background-color: rgb( 255, 255, 255);
     overflow-x: hidden;
   }
 
@@ -42,8 +49,106 @@ div.center-container {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+#view {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+}
 
 // overiding material theme classes
 .mat-tab-label, .mat-tab-link {
-  color: #ffffff !important;
+  // color: #ffffff !important;
+}
+
+.input-field {
+  margin: 0.75rem 0;
+  width: 100%;
+  input {
+    padding: 6px 10px;
+    height: 45px;
+    font-size: 14px;
+    background: #3e3e3e;
+    background: hsla(0,0%,100%,.2);
+    color: #dddddd;
+    width: 100%;
+    border: 2px solid #dddddd;
+    box-sizing: border-box;
+    border-radius: 5px;
+    transition: border .2s ease;
+    outline: none;
+    //&:focus {
+    //  outline: none;
+    //  color: #fff;
+    //  transition: border .2s ease;
+    //  border: 2px solid hsla(0,0%,100%,.8);
+    //  background-color: hsla(0,0%,100%,.35);
+    //}
+  }
+  &.group {
+    &::after{
+      content: '';
+      display: table;
+      clear: both;
+    }
+    position: relative;
+    .divider {
+      width: 2%;
+      display: inline-block;
+      height: 40px;
+      background: #3e3e3e;
+      background: hsla(0,0%,100%,.2);
+      line-height: 40px;
+      float: left;
+    }
+    input {
+      float: left;
+      width: 49%;
+      border-radius: 0;
+      display: inline-block;
+      &:first-of-type {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-right: none;
+      }
+      &:last-of-type {
+        border-left: none;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  display: none;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.9);
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 70%;
+    min-height: 50%;
+  }
+}
+
+.mat-tab-body-content {
+  height: 405px !important;
+  overflow: hidden !important;
+}
+
+.theme-color {
+  background-color: $accent-color;
+}
+.text-theme-color {
+  color: $accent-color;
 }

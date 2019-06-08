@@ -1,16 +1,41 @@
+@import "~src/app/theme/theme";
+
 div.overlay {
   width: 100%;
   height: 100vh;
-  background: url("../../../assets/images/movie-poster-bg.jpg");
+  // background: url("../../../assets/images/movie-poster-bg.jpg");
+  .center-container {
+    form {
+      width: 70%;
+      margin: auto;
+    }
+  }
 }
 
-.input-field {
-  margin: 0.75rem;
-  input {
-    padding: 10px 1.2rem;
-    color: #ffffff;
-    border-radius: 6px;
+.plan {
+  text-align: center;
+  ._tab {
+    width: 40%;
     border: 1px solid #ddd;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(255,255,255,0.2);
+    color: rgba( 0, 0, 0, 0.7);
+    padding: 10px 14px;
+    display: inline-block;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(255,255,255,0.4);
+    }
+    &.active {
+      background-color: $accent-color;
+    }
+    &:first-of-type {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-right: 0;
+    }
+    &:last-of-type {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
   }
 }

@@ -1,0 +1,65 @@
+@import "~src/app/theme/theme";
+.overlay {
+  height: 60vh;
+  overflow-y: hidden;
+  position: relative;
+  width: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  .shader {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background: linear-gradient(to top, rgb( 255, 255, 255), rgba( 255,  255,  255, 0));
+  }
+}
+
+.info_panel {
+  .content_box {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+.content_box {
+  .header {
+    .title {
+      font-size: 3rem;
+    }
+    .meta_1 {
+      padding: 0.7rem;
+      span {
+        margin-right: 10px;
+        padding-right: 10px;
+      }
+    }
+    .box_rated {
+      border: 1.2px solid #666666;
+      color: #666666;
+      padding: 2px 5px;
+      font-size: 0.8rem;
+    }
+  }
+  .action {
+    padding: 1.2rem 0.75rem;
+  }
+  .video-post {
+    margin-bottom: 4.75rem;
+  }
+
+  .related-content {
+    border-top: 1px solid #dddddd;
+    padding: 4rem 0.7rem;
+    .title {
+      margin-bottom: 0.8rem;
+    }
+    .card {
+      padding-right: 0 !important;
+    }
+  }
+}

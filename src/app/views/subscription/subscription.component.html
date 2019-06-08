@@ -1,27 +1,70 @@
 <div class="overlay">
   <div class="center-container">
-    <h2>Subscribe today..</h2>
+    <div class="plan">
+      <div class="_tab" [ngClass]="{'active': monthlyPlan}" (click)="togglePlan(true)">FCFA 5,000/Mo</div>
+      <div class="_tab" [ngClass]="{'active': !monthlyPlan}" (click)="togglePlan(false)">FCFA 57,600/Yr</div>
+    </div>
     <div class="form">
-      <form action="">
         <mat-tab-group>
           <mat-tab label="Card">
+            <p class="text-center"><img src="../../../assets/images/creditcard.png" style="width: 28%;padding: 10px 0;"></p>
             <form action="#">
               <div class="input-field">
                 <input type="text" placeholder="Email address" />
+              </div>
+              <div class="input-field">
+                <input type="text" placeholder="Name on card" />
+              </div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <div class="input-field">
+                    <input type="number" placeholder="Card number" />
+                  </div>
+                </div>
+                <div class="col-sm-3" style="padding-left: 0px;">
+                  <div class="input-field">
+                    <input type="number" maxlength="3" minlength="3" placeholder="CCV" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6" style="padding-right: 0;">
+                  <div class="input-field group">
+                    <input type="number" placeholder="MM">
+                    <span class="divider">/</span>
+                    <input type="number" placeholder="YY">
+                  </div>
+                </div>
+              </div>
+              <div class="foot p-3">
+                <button class="w-full px-2 py-3 theme-color text-white rounded">SUBSCRIBE {{monthlyPlan ? 'FCFA 5,000/Mo': 'FCFA 57,600/Yr'}}</button>
               </div>
             </form>
           </mat-tab>
           <mat-tab label="PayPal">
             <form action="#">
-
+                <p class="text-center my-2">
+                  <img src="../../../assets/images/paypal.png" alt="paypallogo">
+                </p>
+              <div class="text-center">
+                <button class="bg-blue-dark hover:bg-blue-darker text-white py-3 px-4 rounded w-1/2">Continue</button>
+              </div>
             </form>
           </mat-tab>
           <mat-tab label="Mobile money">
-            <form action="#"></form>
+            <form action="#">
+              <div class="row py-16">
+                <div class="col-sm-6">
+                  <a href="https://api.mtnmobilemoney.com" target="_blank"><img src="../../../assets/images/momo.jpg" alt="momo"></a>
+                </div>
+                <div class="col-sm-6">
+                  <a href="https://api.orangemobilemoney.com" target="_blank"><img src="../../../assets/images/orange_money.jpg" alt="orange_money"></a>
+                </div>
+              </div>
+            </form>
           </mat-tab>
         </mat-tab-group>
-
-      </form>
     </div>
   </div>
 

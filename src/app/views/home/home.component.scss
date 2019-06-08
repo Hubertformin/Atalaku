@@ -1,13 +1,21 @@
+@import "~src/app/theme/theme";
+
 #overlay {
     width: 100%;
     height: 100vh;
-    background: url('../../../assets/images/bg.jpg') no-repeat center fixed;
+    background: url('../../../assets/images/collage.jpeg') no-repeat center fixed;
     background-size: cover;
 }
 .intro {
-  background-color: rgba(0,0,0, 0.12);
+  background-color: rgba(0,0,0, 0.2);
+  color: $primary-color;
   .title {
     font-size: 4rem;
+    img {
+      width: 75px;
+      height: 75px;
+      margin-bottom: -3%;
+    }
   }
 }
 .intro_rows{
@@ -15,7 +23,7 @@
   padding: 2.85rem 1.75rem;
 }
 .pricing_plan {
-  background: linear-gradient(to bottom, #f70f09, #f79999);
+  background: linear-gradient(to bottom, $accent-color, #f7e0a3);
   padding: 2.5rem 1.5rem;
   height: 250px;
 }

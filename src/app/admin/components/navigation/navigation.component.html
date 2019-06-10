@@ -1,0 +1,26 @@
+<nav id="sideNav">
+  <div class="head">
+    <img src="../../../../assets/images/logo.png" alt="logo" class="logo" />
+    <span class="title">ATALAKU(Admin)</span>
+  </div>
+  <div class="body">
+    <ul>
+      <li>
+        <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <fa-icon [icon]="moviesIcon"></fa-icon>Overview</a>
+      </li>
+      <li><a routerLink="/admin/movies-dashboard" routerLinkActive="active"><fa-icon [icon]="moviesIcon"></fa-icon>Movies</a></li>
+      <li><a href="#"><fa-icon [icon]="musicIcon"></fa-icon>Music</a></li>
+      <li><a href="#"><fa-icon [icon]="usersIcon"></fa-icon>Users</a></li>
+      <li><a href="#"><fa-icon [icon]="settingsIcon"></fa-icon>Settings</a></li>
+      <li>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>Drop down</mat-expansion-panel-header>
+          <ul>
+            <li>Home</li>
+          </ul>
+        </mat-expansion-panel>
+      </li>
+    </ul>
+  </div>
+</nav>

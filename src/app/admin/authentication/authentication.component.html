@@ -1,0 +1,25 @@
+<section>
+  <div class="center-container text-center">
+    <img class="logo" src="../../../assets/images/logo.png" alt="">
+    <h2 class="text-red-dark">ATALAKU(ADMIN)</h2>
+    <form class="py-5 px-6" (submit)="authenticate($event)" action="#" [formGroup]="formField">
+      <div>
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input type="text" matInput placeholder="Username" required formControlName="username">
+          <mat-hint style="color: #e3342f;" *ngIf="username.invalid && (username.dirty || username.touched)">Username is required</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="mt-3 py-2">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input type="password" matInput placeholder="Password" required formControlName="password">
+          <mat-hint style="color: #e3342f;" *ngIf="password.invalid && (password.dirty || password.touched)">Password is required</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="mt-3">
+        <button type="submit" class="bg-red-dark text-white" mat-button>Login</button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators} from '@angular/forms';
+import {retry} from 'rxjs/operators';
+import {Router} from '@angular/router';
+
+@Component({
+  selector: 'app-authentication',
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.scss']
+})
+export class AuthenticationComponent implements OnInit {
+  // form variables
+  formField = this.formBuilder.group({
+    username: [null, Validators.required],
+    password: [null, Validators.required]
+  });
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: Router
+  ) { }
+
+  ngOnInit() {}
+  // Getters of form field parameters to be used for validation
+  get username() {
+    return this.formField.get('username');
+  }
+  get password() {
+    return this.formField.get('password');
+  }
+
+  /**
+   * @method authenticate
+   * @summary authenticate user
+   * */
+  authenticate(e) {
+    e.preventDefault();
+    if (this.username.invalid || this.password.invalid) {
+      alert('Insert valid username and password!');
+      return;
+    }
+    // submitting form
+    if (window.sessionStorage) {
+      window.sessionStorage.setItem('user', JSON.stringify({username: this.username.value, password: this.password.value}));
+      this.route.navigate(['/admin/dashboard']);
+    }
+  }
+
+}

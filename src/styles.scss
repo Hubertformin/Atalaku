@@ -51,11 +51,19 @@ div.center-container {
 }
 #view {
   position: fixed;
-  top: 50px;
+  top: 55px;
   right: 0;
   bottom: 0;
   left: 0;
   overflow-y: auto;
+}
+
+.detailed-pane {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 230px;
 }
 
 // overiding material theme classes

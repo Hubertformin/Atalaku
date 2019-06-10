@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { AdminModule } from './admin/admin.module';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
@@ -18,6 +19,8 @@ import { MusicComponent } from './views/music/music.component';
 import { VideosComponent } from './views/videos/videos.component';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 import { MoviesComponent } from './views/movies/movies.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -29,16 +32,19 @@ import { MoviesComponent } from './views/movies/movies.component';
     VideosComponent,
     AudioPlayerComponent,
     MoviesComponent,
+    PageNotFoundComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    AdminModule,
     MatVideoModule,
     MaterialComponentsModuleModule,
     CarouselModule,
     NgxAudioPlayerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

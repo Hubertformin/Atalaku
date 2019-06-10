@@ -6,6 +6,7 @@ import {WatchComponent} from './views/watch/watch.component';
 import {MusicComponent} from './views/music/music.component';
 import {MoviesComponent} from './views/movies/movies.component';
 import {VideosComponent} from './views/videos/videos.component';
+import {PageNotFoundComponent} from './views/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'videos',
     component: VideosComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

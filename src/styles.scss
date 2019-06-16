@@ -27,9 +27,11 @@ $nudle-default-theme: mat-light-theme($nudle-default-primary, $nudle-default-acc
 //
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import "~angular-notifier/styles";
 // Theme
 @import "app/theme/theme";
 
+* {margin: 0; padding: 0; box-sizing: border-box;outline: none !important;}
 html, body {
     line-height: 1.5;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
@@ -60,10 +62,11 @@ div.center-container {
 
 .detailed-pane {
   position: fixed;
-  top: 0;
+  top: 50px;
   bottom: 0;
   right: 0;
   left: 230px;
+  overflow: auto;
 }
 
 // overiding material theme classes
@@ -138,20 +141,27 @@ div.center-container {
   right: 0;
   left: 0;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.9);
+  overflow-y: auto;
+  padding-top: 120px;
+  background-color: rgba(0, 0, 0, 0.6);
   .content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 70%;
+    min-width: 35%;
     min-height: 50%;
+    background-color: #ffffff;
   }
-}
-
-.mat-tab-body-content {
-  height: 405px !important;
-  overflow: hidden !important;
+  .content-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+    background-color: #ffffff;
+  }
 }
 
 .theme-color {
@@ -160,3 +170,9 @@ div.center-container {
 .text-theme-color {
   color: $accent-color;
 }
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+

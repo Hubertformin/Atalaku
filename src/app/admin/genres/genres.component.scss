@@ -1,0 +1,25 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 18px;
+  thead tr {
+    border-bottom: 1px solid #000000;
+  }
+  th, td {
+    text-align: left;
+    padding: 12px;
+    &.small {
+      width: 6%;
+    }
+  }
+  tbody {
+    border: none;
+    tr {
+      border-bottom: 1px solid #ddd;
+
+      &.header, &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+  }
+}

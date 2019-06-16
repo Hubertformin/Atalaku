@@ -1,0 +1,180 @@
+<section>
+  <app-navigation></app-navigation>
+</section>
+<section class="detailed-pane px-8 py-5 bg-grey-lightest">
+  <div class="row h-full">
+    <div class="col-sm-3 h-full" style="padding: 0;">
+      <div class="panel bg-white h-full border">
+        <div class="py-3 px-4 border-b">
+          <h2 class="text-red">Settings</h2>
+        </div>
+        <div>
+          <ul class="settings">
+            <li (click)="switchTab($event, 'General')" [ngClass]="{'text-red': switchToTab === 'General'}">General</li>
+            <li (click)="switchTab($event, 'Email')" [ngClass]="{'text-red': switchToTab === 'Email'}">Email settings</li>
+            <li (click)="switchTab($event, 'SMS')" [ngClass]="{'text-red': switchToTab === 'SMS'}">SMS settings</li>
+            <li (click)="switchTab($event, 'Front-end')" [ngClass]="{'text-red': switchToTab === 'Front-end'}">Front end</li>
+            <li (click)="switchTab($event, 'About')" [ngClass]="{'text-red': switchToTab === 'About'}">About</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9 h-full">
+      <div [ngSwitch]="switchToTab" class="details bg-white h-full border">
+        <!--generally-->
+        <div *ngSwitchCase="'General'" class="px-5 py-2">
+          <h1 class="text-red">General</h1>
+          <div class="row content mt-4 border-t py-3">
+            <div class="col-sm-2">
+              <strong>Currency</strong>
+            </div>
+            <div class="col-sm-4">
+              <mat-form-field>
+                <mat-label>Select currency</mat-label>
+                <mat-select>
+                  <mat-option value="XAF">XAF (Central African)</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <!--email settings-->
+        <div *ngSwitchCase="'Email'" class="px-5 py-2">
+          <h1 class="text-red">Email settings</h1>
+          <div class="row content mt-4 border-t py-3">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-6">
+              <div class="my-1">
+                <mat-form-field>
+                  <mat-label>Email engine</mat-label>
+                  <input type="text" disabled matInput placeholder="Email engine" value="SMTP" />
+                </mat-form-field>
+              </div>
+              <div class="my-1">
+                <mat-form-field>
+                  <mat-label>SMTP username</mat-label>
+                  <input type="text" placeholder="SMTP username" matInput />
+                </mat-form-field>
+              </div>
+              <div class="my-1">
+                <mat-form-field>
+                  <mat-label>SMTP password</mat-label>
+                  <input type="text" placeholder="SMTP passowrd" matInput />
+                </mat-form-field>
+              </div>
+              <div class="my-1">
+                <mat-form-field>
+                  <mat-label>SMTP server</mat-label>
+                  <input type="text" placeholder="SMTP server" matInput />
+                </mat-form-field>
+              </div>
+              <div class="my-1">
+                <mat-form-field>
+                  <mat-label>SMTP port</mat-label>
+                  <input type="text" placeholder="SMTP port" matInput />
+                </mat-form-field>
+              </div>
+              <div class="my-1">
+                <mat-form-field>
+                  <mat-label>SMTP security</mat-label>
+                  <input type="text" placeholder="SMTP security" matInput />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--sms settings-->
+        <div *ngSwitchCase="'SMS'" class="py-2">
+          <h1 class="text-red px-5">SMS Settings</h1>
+          <div class="content mt-4 border-t py-3">
+            <p class="px-8 my-2 w-64">
+              <mat-form-field>
+                <mat-label>Select default gateway</mat-label>
+                <mat-select>
+                  <mat-option value="Clickatell">Clickatell</mat-option>
+                  <mat-option value="Twilio">Twilio</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+            <p class="px-8">Configure provider</p>
+            <mat-tab-group>
+              <!--Clckatell gateway-->
+              <mat-tab label="Clickatell Gateway">
+                <div class="row py-3">
+                  <div class="col-1"></div>
+                  <div class="col-5">
+                    <div>
+                      <mat-form-field>
+                        <mat-label>Clickatell username</mat-label>
+                        <input type="text" placeholder="Clickatell username" matInput required />
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field>
+                        <mat-label>Clickatell password</mat-label>
+                        <input type="text" placeholder="Clickatell password" matInput required />
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field>
+                        <mat-label>Clickatell Api Id</mat-label>
+                        <input type="text" placeholder="Clickatell Api Id" matInput required />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-4 py-3 text-center">
+                    <img src="../../../assets/images/clickatell.png" alt="clickatell">
+                    <p class="my-3"><a href="https://clickatell.com">https://clickatell.com</a></p>
+                  </div>
+                </div>
+              </mat-tab>
+              <!--Twilio gateway-->
+              <mat-tab label="Twilio Gateway">
+                <div class="row my-3">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-5">
+                    <div>
+                      <mat-form-field>
+                        <mat-label>Twilio account SID</mat-label>
+                        <input type="text" matInput placeholder="Twilio account SID" required />
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field>
+                        <mat-label>Authentication Token</mat-label>
+                        <input type="text" matInput placeholder="Authentication Token" required />
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field>
+                        <mat-label>Registered phone number</mat-label>
+                        <input type="text" matInput placeholder="Registered phone number" required />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 text-center py-3">
+                    <img src="../../../assets/images/twilio.png" alt="">
+                    <p class="my-2"><a href="https://twilio.com">https://twilio.com</a></p>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+        <!--Front end-->
+        <div *ngSwitchCase="'Front-end'">
+          <h1 class="text-red">Front end settings</h1>
+        </div>
+        <!--about-->
+        <div *ngSwitchCase="'About'">
+          <h1 class="text-red">About</h1>
+        </div>
+        <!--save button-->
+        <div class="save-div text-right border-t p-3">
+          <button class="bg-red text-white" mat-button>Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

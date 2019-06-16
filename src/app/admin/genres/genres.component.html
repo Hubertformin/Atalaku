@@ -1,0 +1,84 @@
+<section>
+  <app-navigation></app-navigation>
+</section>
+<section class="detailed-pane">
+  <div class="row py-3 h-full">
+    <div class="col-sm-4 border-r h-full">
+      <h3 class="text-red">Music genres</h3>
+      <div class="form">
+        <mat-form-field>
+          <mat-label>Genre</mat-label>
+          <input type="text" matInput placeholder="Enter genre name">
+        </mat-form-field>
+        <button mat-raised-button matSuffix>+ Add</button>
+      </div>
+      <!--set's -->
+      <div class="sets">
+        <table>
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th class="small"></th>
+            <th class="small"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Afro</td>
+            <td class="small"><fa-icon [icon]="editIcon"></fa-icon></td>
+            <td class="small"><fa-icon [icon]="deleteIcon"></fa-icon></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+
+      </div>
+    </div>
+    <div class="col-sm-5 border-r h-full">
+      <h3 class="text-red">Movies genres</h3>
+      <div class="form">
+        <mat-form-field>
+          <mat-label>Genre</mat-label>
+          <input type="text" matInput placeholder="Enter genre name">
+        </mat-form-field>
+        <button mat-raised-button matSuffix>+ Add</button>
+      </div>
+      <!--set's-->
+      <div class="sets">
+        <table>
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th class="small"></th>
+            <th class="small"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Adventure</td>
+            <td class="small"><fa-icon [icon]="editIcon"></fa-icon></td>
+            <td class="small"><fa-icon [icon]="deleteIcon"></fa-icon></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!--some explanatory text-->
+    <div class="col-sm-3 py-16">
+      <details open class="my-3 py-3 bg-grey-lighter border px-2">
+        <summary>Music Genres</summary>
+        <ul class="pl-8">
+          <li>Set's for both audio and music vidoes</li>
+          <li>Required when adding a music file</li>
+        </ul>
+      </details>
+      <details open class="py-3 bg-grey-lighter px-2">
+        <summary>Movie Genres</summary>
+        <ul class="pl-8">
+          <li>Required on creation of movie categories</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>

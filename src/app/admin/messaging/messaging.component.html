@@ -1,0 +1,90 @@
+<section>
+  <app-navigation></app-navigation>
+</section>
+<section class="detailed-pane">
+  <div class="row h-full">
+    <div class="col-sm-4 h-full border-r">
+      <div class="header border-b pt-3" style="height: 15%;">
+        <h3 class="text-red">Sent messages</h3>
+        <div class="row">
+          <div class="col-sm-5">
+            <mat-form-field>
+              <mat-label>Sort by</mat-label>
+              <mat-select>
+                <mat-option value="all">All</mat-option>
+                <mat-option value="Mail">Mail</mat-option>
+                <mat-option value="SMS">SMS</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-7 text-right">
+            <button (click)="toggleComposeModal()" mat-raised-button class="bg-red hover:bg-red-dark text-white"><fa-icon [icon]="composeIcon"></fa-icon> Compose</button>
+          </div>
+        </div>
+      </div>
+      <div class="body overflow-y-auto" style="height: 85%;"></div>
+    </div>
+    <div class="col-sm-8 h-full p-8">
+      <div class="actions text-right">
+        <button mat-button><fa-icon [icon]="forwardIcon"></fa-icon> Forward</button>
+        <button mat-button><fa-icon [icon]="deleteIcon"></fa-icon> Delete</button>
+      </div>
+      <div class="body">
+        <p>Message body</p>
+      </div>
+    </div>
+  </div>
+  <!--section send message modal-->
+  <section id="send-message-modal" class="shadow-lg">
+    <div class="bar"><p class="inline-block w-1/2">Send message</p>
+      <p class="inline-block w-1/2 text-right">
+        <span class="cursor-pointer" (click)="toggleComposeModal()">x close</span>
+      </p></div>
+    <div class="body">
+      <form action="">
+        <div class="row">
+          <div class="col-sm-4">
+            <p class="my-3">Send to: </p>
+            <mat-tab-group>
+              <mat-tab label="Group">
+                <div class="py-4 px-8">
+                  <p class="my-3"><mat-checkbox>Registered Users</mat-checkbox></p>
+                  <p class="my-3"><mat-checkbox>Staff Members</mat-checkbox></p>
+                </div>
+              </mat-tab>
+              <mat-tab label="Individual" class="py-3">
+                <div class="py-4">
+                  <mat-form-field>
+                    <input type="search" placeholder="search..." matInput>
+                    <button matSuffix mat-button><fa-icon [icon]="searchIcon"></fa-icon></button>
+                  </mat-form-field>
+                  <p class="my-2">Selected individuals</p>
+                  <div class="bg-grey-lightest rounded overflow-y-auto" style="height: 11rem;"></div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+          <div class="col-sm-8 border-l">
+            <mat-form-field>
+              <mat-label>Title</mat-label>
+              <input type="text" placeholder="Title" matInput />
+            </mat-form-field>
+            <div class="my-3">
+              <p class="inline-block mr-3">Send through</p>
+              <p class="inline-block mr-3"><mat-checkbox>Mail</mat-checkbox></p>
+              <p class="inline-block"><mat-checkbox>SMS</mat-checkbox></p>
+            </div>
+            <mat-form-field appearance="outline">
+              <mat-label>Message</mat-label>
+              <textarea cols="30" rows="10" matInput placeholder="Message"></textarea>
+            </mat-form-field>
+            <div class="text-right"><button type="button" class="bg-red-dark hover:bg-red-darker text-white" mat-raised-button>
+              <fa-icon [icon]="sendMessageIcon"></fa-icon>
+              Send
+            </button></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</section>

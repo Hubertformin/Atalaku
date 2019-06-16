@@ -1,0 +1,124 @@
+<section>
+  <app-navigation></app-navigation>
+</section>
+<section class="detailed-pane">
+  <section id="header" class="w-full bg-green-darkest text-white py-3 px-8">
+      <h2>Staff Manager</h2>
+      <p>manage staff accounts, set and edit permissions.</p>
+  </section>
+  <div id="action" class="text-right border-b">
+    <button (click)="toggleCreateMode()" mat-raised-button class="bg-green-darker hover:bg-green-darkest text-white">Add staff</button>
+  </div>
+  <section id="body">
+    <div class="p-3">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th></th>
+          <th>Username</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let staff of staffMembers; let i = index">
+          <td>{{i + 1}}</td>
+          <td><img src="../../../assets/images/user_icon.png" style="height: 35px;width: 35px;" alt="pp"></td>
+          <td>{{staff.username}}</td>
+          <td>{{staff.phone}}</td>
+          <td>{{staff.email}}</td>
+          <td>
+            <button (click)="toggleEditMode(i)" mat-button><fa-icon [icon]="editIcon"></fa-icon></button>
+          </td>
+          <td>
+            <button (click)="deleteStaff(i)" mat-button><fa-icon [icon]="deleteIcon"></fa-icon></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!--modal-->
+  <section class="modal" id="userForm">
+    <div class="content-bottom">
+      <form action="#" (submit)="addStaff($event)">
+        <div class="header py-6 border-b px-8">
+          <h2 class="text-green-darker">Create staff account</h2>
+        </div>
+        <div class="body px-8">
+          <div class="row h-full">
+            <div class="col-sm-4 h-full pt-3 border-r" [formGroup]="staffForm">
+              <mat-form-field>
+                <input type="text" matInput placeholder="Username" formControlName="username" required />
+                <mat-hint *ngIf="username.invalid && (username.dirty || username.touched)"><span class="text-red">Please insert a valid username</span></mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <input type="email" matInput placeholder="Email" formControlName="email" />
+                <mat-hint *ngIf="email.invalid && (email.dirty)"><span class="text-red">Please insert a valid email</span></mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Phone number</mat-label>
+                <input type="number" placeholder="Phone number" formControlName="phone" minlength="9" matInput />
+                <mat-hint *ngIf="phone.dirty && phone.value < 600000000"><span class="text-red">Invalid phone number</span></mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="********" formControlName="password" required />
+                <mat-hint *ngIf="password.invalid && (password.dirty || password.touched)"><span class="text-red">Please insert a valid password</span></mat-hint>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" matInput placeholder="********" formControlName="confirmPassword" required />
+                <mat-hint *ngIf="(password.value !== confirmPassword.value) && confirmPassword.dirty">
+                  <span class="text-red">Passwords do not match.</span>
+                </mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-8 h-full overflow-y-auto">
+                <h4 class="text-red">Permissions</h4>
+              <p class="my-3"><mat-checkbox name="sa" (change)="setAllPermissions()">Assign all permissions.</mat-checkbox></p>
+              <div class="permissions row py-3 border-t">
+               <div class="col-sm-12 pt-1 pb-3">
+                 <div class="row border-dashed border-b py-1 mb-2">
+                   <div class="col-sm-6"><h3>Staff</h3></div>
+                 </div>
+               </div>
+                <div class="col-sm-4"><mat-checkbox name="cs" [(ngModel)]="staffPermissions.addStaff">Create staff</mat-checkbox></div>
+                <div class="col-sm-4"><mat-checkbox name="es" [(ngModel)]="staffPermissions.updateStaff">Edit staff</mat-checkbox></div>
+                <div class="col-sm-4"><mat-checkbox name="ds" [(ngModel)]="staffPermissions.deleteStaff">Delete staff</mat-checkbox></div>
+              </div>
+              <div class="permissions row py-3 border-t">
+               <div class="col-sm-12 pt-1 pb-3">
+                 <div class="row border-dashed border-b py-1 mb-2">
+                   <div class="col-sm-6"><h3>Music</h3></div>
+                 </div>
+               </div>
+                <div class="col-sm-4"><mat-checkbox name="am" [(ngModel)]="staffPermissions.addMusic">Upload music</mat-checkbox></div>
+                <div class="col-sm-4"><mat-checkbox name="dm" [(ngModel)]="staffPermissions.deleteMusic">Delete music</mat-checkbox></div>
+                <div class="col-sm-4"><mat-checkbox name="um" [(ngModel)]="staffPermissions.updateMusic">Modify music parameters</mat-checkbox></div>
+              </div>
+              <div class="permissions row py-3 border-t">
+               <div class="col-sm-12 pt-1 pb-3">
+                 <div class="row border-dashed border-b py-1 mb-2">
+                   <div class="col-sm-6"><h3>Movies</h3></div>
+                 </div>
+               </div>
+                <div class="col-sm-4"><mat-checkbox name="umv" [(ngModel)]="staffPermissions.addMovies">Upload movies</mat-checkbox></div>
+                <div class="col-sm-4"><mat-checkbox name="dm" [(ngModel)]="staffPermissions.deleteMovies">Delete movies</mat-checkbox></div>
+                <div class="col-sm-4"><mat-checkbox name="umv" [(ngModel)]="staffPermissions.updateMovies">Modify movie parameters</mat-checkbox></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="foot text-right border-t p-3">
+          <span class="mr-2"><button mat-raised-button class="bg-grey-dark text-white" type="button" (click)="toggleModal()">cancel</button></span>
+          <span><button mat-raised-button class="bg-red-dark text-white" type="submit">save</button></span>
+        </div>
+      </form>
+    </div>
+  </section>
+</section>

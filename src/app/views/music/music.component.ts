@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ActivatedRoute } from '@angular/router';
 import {Track} from 'ngx-audio-player';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-music',
@@ -61,9 +62,12 @@ export class MusicComponent implements OnInit {
   // playlist
 
 
-  constructor() { }
+  constructor(
+    private titleService: Title
+  ) { }
 
   ngOnInit() {
+    this.titleService.setTitle('MUSIC - ATALAKU');
   }
 
 }

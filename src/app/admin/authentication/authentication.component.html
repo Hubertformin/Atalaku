@@ -1,25 +1,33 @@
-<section>
-  <div class="center-container text-center">
-    <img class="logo" src="../../../assets/images/logo.png" alt="">
-    <h2 class="text-red-dark">ATALAKU(ADMIN)</h2>
-    <form class="py-5 px-6" (submit)="authenticate($event)" action="#" [formGroup]="formField">
-      <div>
-        <mat-form-field>
-          <mat-label>Username</mat-label>
-          <input type="text" matInput placeholder="Username" required formControlName="username">
-          <mat-hint style="color: #e3342f;" *ngIf="username.invalid && (username.dirty || username.touched)">Username is required</mat-hint>
-        </mat-form-field>
+<section class="relative w-full h-full bg-green-darkest">
+  <div class="center-container">
+    <form (submit)="authenticate($event)" action="#" [formGroup]="formField" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto">
+      <div class="form-header">
+        <p class="text-center"><img class="logo" src="../../../assets/images/logo.png" alt=""></p>
+        <h3 class="text-red-dark text-center my-3">ATALAKU<small style="font-size: 0.5rem;">Admin</small></h3>
       </div>
-      <div class="mt-3 py-2">
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input type="password" matInput placeholder="Password" required formControlName="password">
-          <mat-hint style="color: #e3342f;" *ngIf="password.invalid && (password.dirty || password.touched)">Password is required</mat-hint>
-        </mat-form-field>
+      <div class="mb-4">
+        <label [ngClass]="{'text-red': username.invalid && (username.dirty || username.touched)}" class="block text-grey-darker text-sm font-bold mb-2" for="username">
+          Username
+        </label>
+        <input [ngClass]="{'border-red': username.invalid && (username.dirty || username.touched)}" formControlName="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+        <p *ngIf="username.invalid && (username.dirty || username.touched)" class="text-red text-xs italic">Please insert a valid username.</p>
       </div>
-      <div class="mt-3">
-        <button type="submit" class="bg-red-dark text-white" mat-button>Login</button>
+      <div class="mb-6">
+        <label [ngClass]="{'text-red': password.invalid && (password.dirty || password.touched)}" class="block text-grey-darker text-sm font-bold mb-2" for="password">
+          Password
+        </label>
+        <input [ngClass]="{'border-red': password.invalid && (password.dirty || password.touched)}" formControlName="password"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+        <p *ngIf="password.invalid && (password.dirty || password.touched)" class="text-red text-xs italic">Please insert a valid password password.</p>
+      </div>
+      <div class="flex items-center justify-center">
+        <button class="bg-red-dark hover:bg-red-darker text-white font-bold py-2 px-6 rounded-full focus:shadow-outline" type="submit">
+          Login
+        </button>
       </div>
     </form>
+    <p class="text-center text-grey text-xs">
+      ©2019 Atalaku Corp. All rights reserved.
+    </p>
   </div>
 </section>

@@ -2,39 +2,12 @@
   <app-navigation></app-navigation>
 </section>
 <section class="detailed-pane">
-  <mat-tab-group>
-    <mat-tab label="Details">
-      <section class="tab-body py-3 px-4">
-        <mat-card>
-          <div class="row">
-            <div class="col-sm-6">
-              <p class="mb-2">Movies genre</p>
-            </div>
-            <div class="col-sm-6 text-right">
-              <button mat-raised-button>Create genre</button>
-            </div>
-          </div>
-          <div class="view-rows">
-            <table>
-              <thead>
-              <tr>
-                <th>Name</th>
-                <th>Action</th>
-              </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </mat-card>
+  <div class="pt-8 pb-12 px-12 bg-purple-darker text-white">
+    <h2>Movies dashboard</h2>
+    <p>Create update, delete movies</p>
+  </div>
+  <div class="p-3 text-right">
+    <a routerLink="/admin/add-movie" class="bg-purple hover:bg-purple-dark text-white" mat-raised-button>Add music</a>
+  </div>
 
-        <mat-card>
-          <p class="">Movies</p>
-        </mat-card>
-      </section>
-    </mat-tab>
-
-    <mat-tab label="View">
-      <p>I'll edit my views here...</p>
-    </mat-tab>
-  </mat-tab-group>
 </section>

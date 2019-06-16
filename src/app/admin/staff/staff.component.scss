@@ -1,0 +1,49 @@
+#header {
+  height: 15%;
+}
+#action {
+  height: 10%;
+  padding: 0.75rem 0.65rem;
+}
+#body {
+  height: 75%;
+  overflow: auto;
+}
+.modal {
+  overflow-y: hidden;
+  .content-bottom {
+    width: 65%;
+    top: 100%;
+    transition: top 0.6s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+    form {
+      position: relative;
+      height: 100%;
+      div.header {
+        height: 10%;
+      }
+      div.body {
+        height: 80%;
+      }
+      div.foot {
+        height: 10%;
+      }
+    }
+  }
+}
+.modal.display {
+  display: block;
+  .content-bottom{
+    top: 10%;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+input[type=number] {
+  &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+}

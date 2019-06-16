@@ -5,8 +5,9 @@ nav#sideNav {
   left: 0;
   width: 230px;
   box-shadow: 0 6px 26px rgba(0, 0, 0, 0.12);
+  overflow: auto;
   .head {
-    height: 15%;
+    height: 50px;
     position: relative;
     padding: 10px 10px 10px 55px;
     img {
@@ -21,19 +22,16 @@ nav#sideNav {
       font-weight: 600;
       font-size: 1.2rem;
       color: #cf3c2f;
-      display: block;
-      -webkit-transform: translateY(65%);
-      -moz-transform: translateY(65%);
-      -ms-transform: translateY(65%);
-      -o-transform: translateY(65%);
-      transform: translateY(65%);
+      small {
+        font-size: 0.8rem;
+      }
     }
   }
   .body {
-    height: 85%;
+    height: calc(100% - 50px);
     overflow: auto;
-    background-color: #0f252f;
-    padding-top: 25px;
+    background-color: #09171d;
+    padding-top: 18px;
   }
    ul {
      margin: 0;
@@ -57,8 +55,9 @@ nav#sideNav {
          background-color: rgba(0, 0, 0, 0.12);
        }
        &.active {
-         border-bottom: 1px solid red;
-         color: red;
+         //border-bottom: 1px solid red;
+         //color: red;
+         background-color: #CC1F1A;
        }
        fa-icon{
          margin-right: 10px;
@@ -67,8 +66,39 @@ nav#sideNav {
    }
 }
 
-nav .mat-expansion-panel {
+nav#sideNav .mat-expansion-panel {
   background: transparent !important;
   color: #ffffff !important;
   border-radius: 0!important;
+}
+
+nav#toolbar {
+  position: fixed;
+  right: 0;
+  left: 230px;
+  height: 50px;
+  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.12);
+  div.user {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    line-height: 50px;
+    padding: 0 15px 0 45px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+    img {
+      height: 35px;
+      width: 35px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    fa-icon {
+      margin-left: 10px;
+    }
+  }
 }

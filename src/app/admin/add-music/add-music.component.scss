@@ -1,0 +1,22 @@
+
+.mat-form-field {
+  width: 100% !important;
+}
+.add-music-card {
+  .header {
+    height: 17%;
+    padding: 10px;
+  }
+  .body {
+    height: 83%;
+    padding: 10px 20px;
+    overflow-y: auto;
+  }
+}
+
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

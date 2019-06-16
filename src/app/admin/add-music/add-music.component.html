@@ -1,0 +1,100 @@
+<section>
+  <app-navigation></app-navigation>
+</section>
+<section class="detailed-pane px-3 py-3">
+  <div class="row h-full">
+    <div class="col-sm-5 h-full" style="padding-right: 0;">
+      <mat-card class="add-music-card h-full" style="padding: 0;">
+        <div class="header border-b">
+          <h4 class="text-red">Create music genre</h4>
+          <div class="row px-3">
+            <div class="col-sm-9">
+              <mat-form-field>
+                <mat-label>Genre</mat-label>
+                <input type="text" placeholder="Genre(ex. Pop, Afro)" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3" style="padding: 0;"><button mat-raised-button class="bg-blue-dark text-white">Add</button></div>
+          </div>
+        </div>
+        <div class="body px-4">
+          <h3 class="text-red">Add Music content</h3>
+          <small>Add music file information or auto detect from uploaded music file.</small>
+          <p class="px-2"><mat-checkbox [(ngModel)]="autoDetectMetaData">Auto detect from file</mat-checkbox></p>
+          <form action="" [hidden]="autoDetectMetaData">
+            <mat-form-field>
+              <mat-label>Title</mat-label>
+              <input type="text" matInput placeholder="Title">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Artist</mat-label>
+              <input type="text" placeholder="Artist" matInput />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Album</mat-label>
+              <input type="text" placeholder="Album" matInput />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Year</mat-label>
+              <input type="number" minlength="4" maxlength="4" placeholder="Year(Release)" matInput>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Genre</mat-label>
+              <mat-select multiple>
+                <mat-option value="Afro pop">Afro pop</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Composer</mat-label>
+              <input type="text" placeholder="Composer" matInput />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Album artist</mat-label>
+              <input type="text" placeholder="Album artist" matInput />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Duration (in mins)</mat-label>
+              <input type="text" placeholder="Duration (in minutes)" matInput />
+            </mat-form-field>
+          </form>
+        </div>
+      </mat-card>
+    </div>
+    <div class="col-sm-7 h-full">
+      <mat-card class="h-full">
+        <h2 class="text-red py-2 border-b">Upload media</h2>
+        <div class="upload-music row">
+          <div class="col-sm-12">
+            <h3 class="">Upload music file</h3>
+          </div>
+          <div class="col-sm-12">
+            <div class="my-2 rounded bg-grey-lighter text-center py-3">
+              <img style="height: 75px;width: auto;" src="../../../assets/images/add-music-file.png" alt="file">
+              <p>
+                <small>Click to add or Drop music file</small>
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-12 hidden">
+            <p><small>Uploading 60%</small></p>
+            <p><small>uploaded 2.4MB/4MB..</small></p>
+            <p class="py-2"><mat-progress-bar mode="determinate" value="60"></mat-progress-bar></p>
+            <p class="text-right"><button mat-button class="text-white bg-grey-dark">cancel</button></p>
+          </div>
+        </div>
+        <!--upload album art-->
+        <div class="album-art mt-3 border-t pt-2 row" *ngIf="!autoDetectMetaData">
+          <div class="col-sm-12"><h3>Upload Album art</h3> <small>Click on disc image to select file.</small></div>
+          <div class="col-sm-3 border rounded text-center bg-grey-lightest ml-2 mt-2">
+            <img src="../../../assets/images/add-music-icon.png" alt="add music icon">
+          </div>
+          <div class="col-sm-12 hidden">
+            <p><small>Uploading 80%</small></p>
+            <p class="py-2"><mat-progress-bar mode="determinate" value="80"></mat-progress-bar></p>
+            <p class="text-right"><button mat-button class="text-white bg-grey-dark">cancel</button></p>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</section>

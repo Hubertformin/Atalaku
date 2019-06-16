@@ -1,26 +1,48 @@
 <nav id="sideNav">
   <div class="head">
     <img src="../../../../assets/images/logo.png" alt="logo" class="logo" />
-    <span class="title">ATALAKU(Admin)</span>
+    <span class="title">ATALAKU <small>Admin</small></span>
   </div>
   <div class="body">
     <ul>
       <li>
         <a routerLink="/admin/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <fa-icon [icon]="moviesIcon"></fa-icon>Overview</a>
+        <fa-icon [icon]="dashboardIcon"></fa-icon>Overview</a>
       </li>
-      <li><a routerLink="/admin/movies-dashboard" routerLinkActive="active"><fa-icon [icon]="moviesIcon"></fa-icon>Movies</a></li>
-      <li><a href="#"><fa-icon [icon]="musicIcon"></fa-icon>Music</a></li>
-      <li><a href="#"><fa-icon [icon]="usersIcon"></fa-icon>Users</a></li>
-      <li><a href="#"><fa-icon [icon]="settingsIcon"></fa-icon>Settings</a></li>
-      <li>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>Drop down</mat-expansion-panel-header>
-          <ul>
-            <li>Home</li>
-          </ul>
-        </mat-expansion-panel>
-      </li>
+      <!--<li>-->
+        <!--<mat-expansion-panel>-->
+          <!--<mat-expansion-panel-header>Movies</mat-expansion-panel-header>-->
+          <!--<ul>-->
+            <!--<li><a routerLink="/admin/movies-dashboard" routerLinkActive="active"><fa-icon [icon]="moviesIcon"></fa-icon>Movies</a></li>-->
+            <!--<li><a routerLink="/admin/add-movie" routerLinkActive="active"><fa-icon [icon]="moviesIcon"></fa-icon>Add movie</a></li>-->
+          <!--</ul>-->
+        <!--</mat-expansion-panel>-->
+      <!--</li>-->
+      <li><a routerLink="/admin/users-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="usersIcon"></fa-icon>Users</a></li>
+      <li><a routerLink="/admin/genres" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="genresIcon"></fa-icon>Genres</a></li>
+      <li><a routerLink="/admin/music-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="musicIcon"></fa-icon>Music</a></li>
+      <li><a routerLink="/admin/music-video-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="musicVideoIcon"></fa-icon>Music vidoes</a></li>
+      <li><a routerLink="/admin/movies-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="moviesIcon"></fa-icon>Movies</a></li>
+      <li><a routerLink="/admin/staff" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="staffIcon"></fa-icon>Staff</a></li>
+      <li><a routerLink="/admin/messaging" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="messagingIcon"></fa-icon>Messaging</a></li>
+      <li><a routerLink="/admin/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="blogIcon"></fa-icon>Blog</a></li>
+      <li><a routerLink="/admin/front-end" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><fa-icon [icon]="frontendIcon"></fa-icon>Front end</a></li>
+      <li><a routerLink="/admin/services" routerLinkActive="active"><fa-icon [icon]="servicesIcon"></fa-icon>Services</a></li>
+      <li><a routerLink="/admin/settings" routerLinkActive="active"><fa-icon [icon]="settingsIcon"></fa-icon>Settings</a></li>
     </ul>
   </div>
 </nav>
+<!--toolbar-->
+<nav id="toolbar" class="border-b">
+  <div class="user" [matMenuTriggerFor]="menu">
+    <img src="../../../../assets/images/user_icon.png" alt=""><span class="name">Hubert</span>
+    <fa-icon [icon]="dropIcon"></fa-icon>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Account</button>
+    <button mat-menu-item>Log out</button>
+  </mat-menu>
+</nav>
+<!--notification container-->
+<notifier-container></notifier-container>
+

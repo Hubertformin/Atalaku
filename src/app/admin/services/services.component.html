@@ -1,0 +1,159 @@
+<section>
+  <app-navigation></app-navigation>
+</section>
+<section class="detailed-pane py-3">
+  <mat-tab-group>
+    <!--subscription plans-->
+    <mat-tab label="Subscription plans">
+      <div class="header py-3 border-b">
+        <div class="row mt-3 px-8">
+          <div class="col-sm-3">
+            <mat-form-field>
+            <input type="text" placeholder="Package name" matInput>
+          </mat-form-field>
+          </div>
+          <div class="col-sm-3">
+            <mat-form-field>
+              <input type="number" placeholder="Amount(FCFA)" matInput>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field>
+              <mat-label>Frequency</mat-label>
+              <mat-select>
+                <mat-option value="Monthly">Monthly</mat-option>
+                <mat-option value="Annually">Annually</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-2">
+            <button mat-raised-button class="bg-red-dark text-white">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="body pt-5 pb-10 px-8">
+        <div class="row">
+          <div class="col-sm-3">
+            <mat-card>
+              <mat-card-content>
+                <h3 class="text-red">Gold</h3>
+                <h1>FCFA 4,000</h1>
+                <p>Monthly</p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button>Edit</button>
+                <button mat-button>Remove</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <!--payment portals-->
+    <mat-tab label="Payment portals">
+      <div class="px-12 py-5">
+        <div class="mb-6">
+          <div class="bg-orange-lightest border-t-4 border-orange rounded-b text-orange-darkest px-4 py-3 shadow-md" role="alert">
+            <div class="flex">
+              <div class="py-1"><svg class="fill-current h-6 w-6 text-orange mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+              <div>
+                <p class="font-bold">Warning</p>
+                <p class="text-sm">Disabling or enabling any payment gateway changes on the front-end.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="list px-4 border my-4">
+          <mat-checkbox checked><img class="check-img" src="../../../assets/images/creditcard.png" alt="c"></mat-checkbox>
+        </div>
+        <div class="list px-4 border my-4">
+          <mat-checkbox checked><img src="../../../assets/images/paypal.png" alt="" class="check-img"></mat-checkbox>
+        </div>
+        <div class="list px-4 border my-4">
+          <mat-checkbox checked><img src="../../../assets/images/momo.jpg" alt="" class="check-img"></mat-checkbox>
+        </div>
+        <div class="list px-4 border my-4">
+          <mat-checkbox checked><img src="../../../assets/images/orange_money.jpg" alt="" class="check-img"></mat-checkbox>
+        </div>
+        <div class="list px-4 border my-4">
+          <mat-checkbox>Express union mobile money</mat-checkbox>
+        </div>
+      </div>
+    </mat-tab>
+    <!--Notifications-->
+    <mat-tab label="Notifications">
+      <div class="px-8 py-4">
+        <div class="header border-b border-black py-3 row font-extrabold">
+          <div class="col-sm-3">Event</div>
+          <div class="col-sm-3">Option</div>
+          <div class="col-sm-6">Sample message</div>
+        </div>
+        <div class="body">
+          <div class="row py-2 border-b">
+            <div class="col-sm-3">
+              <p>User subscription</p>
+            </div>
+            <div class="col-sm-3">
+              <span class="mr-4"><mat-checkbox>Email</mat-checkbox></span>
+              <span><mat-checkbox>SMS</mat-checkbox></span>
+            </div>
+            <div class="col-sm-5">
+              <p class="w-full whitespace-no-wrap" style="text-overflow: ellipsis;">Dear user, welcome to atalaku, here is link to get you started</p>
+            </div>
+            <div class="col-sm-1">
+              <button mat-button><fa-icon [icon]="editIcon"></fa-icon></button>
+            </div>
+          </div>
+          <div class="row py-2 border-b">
+            <div class="col-sm-3">
+              <p>Payment request</p>
+            </div>
+            <div class="col-sm-3">
+              <span class="mr-4"><mat-checkbox>Email</mat-checkbox></span>
+              <span><mat-checkbox>SMS</mat-checkbox></span>
+            </div>
+            <div class="col-sm-5">
+              <p class="w-full whitespace-no-wrap" style="text-overflow: ellipsis;">Dear, customers, we're about to process a payment</p>
+            </div>
+            <div class="col-sm-1">
+              <button mat-button><fa-icon [icon]="editIcon"></fa-icon></button>
+            </div>
+          </div>
+          <div class="row py-2 border-b">
+            <div class="col-sm-3">
+              <p>Payment failed</p>
+            </div>
+            <div class="col-sm-3">
+              <span class="mr-4"><mat-checkbox>Email</mat-checkbox></span>
+              <span><mat-checkbox>SMS</mat-checkbox></span>
+            </div>
+            <div class="col-sm-5">
+              <p class="w-full whitespace-no-wrap" style="text-overflow: ellipsis;">Dear user, welcome to atalaku, here is link to get you started</p>
+            </div>
+            <div class="col-sm-1">
+              <button mat-button><fa-icon [icon]="editIcon"></fa-icon></button>
+            </div>
+          </div>
+          <div class="row py-2 border-b">
+            <div class="col-sm-3">
+              <p>Payment successful</p>
+            </div>
+            <div class="col-sm-3">
+              <span class="mr-4"><mat-checkbox>Email</mat-checkbox></span>
+              <span><mat-checkbox>SMS</mat-checkbox></span>
+            </div>
+            <div class="col-sm-5">
+              <p class="w-full whitespace-no-wrap" style="text-overflow: ellipsis;">Dear user, payment completed, you'll to </p>
+            </div>
+            <div class="col-sm-1">
+              <button mat-button><fa-icon [icon]="editIcon"></fa-icon></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</section>

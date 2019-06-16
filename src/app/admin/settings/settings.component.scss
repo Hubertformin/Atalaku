@@ -1,0 +1,25 @@
+ul.settings {
+  list-style-type: none;
+  li {
+    width: 100%;
+    border-bottom: 1px solid #dddddd;
+    height: 45px;
+    padding: 0 1.2rem;
+    line-height: 45px;
+    cursor: pointer;
+  }
+}
+.mat-form-field {
+  width: 100% !important;
+}
+.details {
+  overflow-y: auto;
+  position: relative;
+}
+.save-div {
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}

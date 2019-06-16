@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import {retry} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-authentication',
@@ -17,10 +18,13 @@ export class AuthenticationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: Router
+    private route: Router,
+    private titleService: Title
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.titleService.setTitle('Login - ATALAKU(Admin)');
+  }
   // Getters of form field parameters to be used for validation
   get username() {
     return this.formField.get('username');

@@ -1,0 +1,161 @@
+<section>
+  <app-navigation></app-navigation>
+</section>
+<section class="detailed-pane pb-12">
+  <div class="py-5 px-6">
+    <div class="border-b py-3 mb-2">
+      <h3 class="text-red"><button (click)="backToPreviousView()" mat-button><fa-icon [icon]="backIcon"></fa-icon> Back</button> Add movie</h3>
+    </div>
+    <form class="mb-5" action="#" [formGroup]="addMovieForm">
+      <div class="row">
+        <!--first column-->
+        <div class="col-sm-8 border-r">
+          <div class="row">
+            <div class="col-sm-6">
+              <mat-form-field>
+                <input type="text" placeholder="Title" formControlName="title" matInput />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Rating</mat-label>
+                <input type="text" matInput formControlName="rating" placeholder="Rating (eg PG-13, R, G)" />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Release Date</mat-label>
+                <input matInput placeholder="Release Date" formControlName="releaseDate" [matDatepicker]="myDatepicker" disabled>
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker startView="multi-year" #myDatepicker [disabled]="false"></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Duration (in mins)</mat-label>
+                <input type="text" placeholder="Duration(in minutes)" formControlName="duration" matInput>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput rows="4" placeholder="Description" formControlName="description"></textarea>
+              </mat-form-field>
+            </div>
+            <!--second colums-->
+            <div class="col-sm-6">
+              <mat-form-field>
+                <mat-label>Genre</mat-label>
+                <mat-select multiple formControlName="genre">
+                  <mat-option value="Action">Action</mat-option>
+                  <mat-option value="Adventure">Adventure</mat-option>
+                  <mat-option value="Comedy">Comedy</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Director</mat-label>
+                <input type="text" placeholder="Director" formControlName="director" matInput />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Writer</mat-label>
+                <input type="text" placeholder="Writer" formControlName="writer" matInput />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Producer</mat-label>
+                <input type="text" placeholder="Producer" formControlName="producer" matInput />
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Studio</mat-label>
+                <input type="text" placeholder="Studio" formControlName="studio" matInput />
+              </mat-form-field>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <mat-card>
+            <div class="mb-6">
+              <small>Upload Thumbnail</small>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="image">
+                    <img src="../../../assets/images/add-movie-thumbnail.png" alt="thumbnail">
+                  </div>
+                </div>
+                <div class="col-sm-9">
+                  <small>90% complete</small>
+                  <div class="py-3"><mat-progress-bar mode="determinate" value="90"></mat-progress-bar></div>
+                  <button mat-raised-button class="bg-grey-dark text-white">cancel</button>
+                </div>
+              </div>
+            </div>
+            <!--upload cover-->
+            <div class="">
+              <small>Upload cover photo</small>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="image">
+                    <img src="../../../assets/images/add-movie-thumbnail.png" alt="thumbnail">
+                  </div>
+                </div>
+                <div class="col-sm-9">
+                  <small>40% complete</small>
+                  <div class="py-3"><mat-progress-bar mode="determinate" value="55"></mat-progress-bar></div>
+                  <button mat-raised-button class="bg-grey-dark text-white">cancel</button>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </form>
+    <!--upload files-->
+    <mat-card>
+      <!--upload movie-->
+      <div class="row">
+        <div class="col-sm-6 border-r">
+          <div class="py-3">
+            <div class="row mb-2">
+              <div class="col-sm-9">
+                <h4>Upload movie</h4>
+                <small><strong>40% complete</strong></small>
+                <mat-divider></mat-divider>
+                <p><small>Pushing file....</small></p>
+                <p><small>Uploading 1.28GB / 3.2GB</small></p>
+              </div>
+              <div class="col-sm-3 text-right">
+                <button mat-raised-button class="bg-red-dark text-white">Upload</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <mat-progress-bar mode="determinate" bufferValue="40" value="30"></mat-progress-bar>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="py-3">
+            <div class="row mb-2">
+              <div class="col-sm-9">
+                <h4>Upload trailer</h4>
+                <small>80% complete</small>
+                <mat-divider></mat-divider>
+                <p><small>Pushing file....</small></p>
+                <p><small>Uploading  16MB/20MB</small></p>
+              </div>
+              <div class="col-sm-3 text-right">
+                <button mat-raised-button class="bg-red-dark text-white">Upload</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</section>

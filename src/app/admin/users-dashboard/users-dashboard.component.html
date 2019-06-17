@@ -2,14 +2,36 @@
   <app-navigation></app-navigation>
 </section>
 <section class="detailed-pane">
-  <div class="pt-8 pb-12 px-12 bg-orange-dark text-white">
+  <div id="header" class="bg-orange-dark text-white">
     <h2>Users</h2>
     <p>Manage registered users.</p>
   </div>
-  <div id="action" class="p-3 text-right">
-    <span>
-        <button mat-raised-button class="bg-orange hover:bg-orange-dark text-white">Add user</button>
-    </span>
+  <div id="body" class="px-2 py-3">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Plan</th>
+          <th>Country/Region</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hubert</td>
+          <td>hformin@gmail.com</td>
+          <td>Gold</td>
+          <td>CM</td>
+        </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Plan</th>
+        <th>Country/Region</th>
+      </tr>
+      </tfoot>
+    </table>
   </div>
-  <div id="body"></div>
 </section>

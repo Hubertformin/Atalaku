@@ -36,6 +36,7 @@ export class AddMovieComponent implements OnInit {
   ngOnInit() {
     this.uploadMode = true;
     this.titleService.setTitle('Add movie - ATALAKU(Admin)');
+    // test video
   }
 
   backToPreviousView() {

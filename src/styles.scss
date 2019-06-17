@@ -13,17 +13,17 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$nudle-default-primary: mat-palette($mat-red);
-$nudle-default-accent: mat-palette($mat-red, A200, A100, A400);
+$atalaku-default-primary: mat-palette($mat-red);
+$atalaku-default-accent: mat-palette($mat-teal, 400, 200, A400);
 // The warn palette is optional (defaults to red).
-$nudle-default-warn: mat-palette($mat-red);
+$atalaku-default-warn: mat-palette($mat-deep-orange);
 // Create the theme object (a Sass map containing all of the palettes).
-$nudle-default-theme: mat-light-theme($nudle-default-primary, $nudle-default-accent, $nudle-default-warn);
+$atalaku-default-theme: mat-light-theme($atalaku-default-primary, $atalaku-default-accent, $atalaku-default-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($nudle-default-theme);
+@include angular-material-theme($atalaku-default-theme);
 //
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';

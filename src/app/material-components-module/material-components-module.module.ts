@@ -16,7 +16,7 @@ import {
   MatTabsModule,
   MatRadioModule,
   MatDatepickerModule,
-  MatNativeDateModule, MatProgressBarModule
+  MatNativeDateModule, MatProgressBarModule, MatListModule
 } from '@angular/material';
 
 @NgModule({
@@ -39,7 +39,8 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    MatRadioModule
+    MatRadioModule,
+    MatListModule
   ],
   exports: [
     MatMenuModule,
@@ -58,7 +59,8 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    MatRadioModule
+    MatRadioModule,
+    MatListModule
   ]
 })
 export class MaterialComponentsModuleModule { }

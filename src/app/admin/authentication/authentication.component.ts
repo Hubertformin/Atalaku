@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
-import {retry} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
+import {NotifierService} from 'angular-notifier';
 
 @Component({
   selector: 'app-authentication',
@@ -19,7 +19,8 @@ export class AuthenticationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private titleService: Title
+    private titleService: Title,
+    private notifierService: NotifierService
   ) { }
 
   ngOnInit() {
@@ -40,7 +41,7 @@ export class AuthenticationComponent implements OnInit {
   authenticate(e) {
     e.preventDefault();
     if (this.username.invalid || this.password.invalid) {
-      alert('Insert valid username and password!');
+      this.notifierService.notify('error', 'Insert valid username and password!');
       return;
     }
     // submitting form

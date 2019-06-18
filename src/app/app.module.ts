@@ -6,7 +6,6 @@ import { AdminModule } from './admin/admin.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
-import { MatVideoModule } from 'mat-video';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialComponentsModuleModule } from './material-components-module/material-components-module.module';
 
@@ -36,17 +35,18 @@ import { HeaderComponent } from './components/header/header.component';
     HeaderComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AdminModule,
-    MatVideoModule,
     MaterialComponentsModuleModule,
     CarouselModule,
     NgxAudioPlayerModule,
     FontAwesomeModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {provide: 'isBrowser', useValue: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {
   Event,
   NavigationCancel,
@@ -16,7 +16,7 @@ import {
 export class AdminComponent implements OnInit {
   loading: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, @Inject('isBrowser') private isBrowser: boolean) {
     this.router.events.subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart:
@@ -34,14 +34,19 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = false;
-    if (window.sessionStorage) {
-      if (window.sessionStorage.getItem('user'))  {
-         // this.route.navigate(['/admin/dashboard']);
-      } else {
-        this.router.navigate(['/admin/login']);
+    if (this.isBrowser) {
+      console.log('This is a the browser...');
+      if (window.sessionStorage) {
+        if (window.sessionStorage.getItem('user'))  {
+          // this.route.navigate(['/admin/dashboard']);
+        } else {
+          this.router.navigate(['/admin/login']);
+        }
       }
+    } else {
+      console.log('This is not the browser bitch...');
     }
   }
+  //
 
 }

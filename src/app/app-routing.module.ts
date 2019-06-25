@@ -7,6 +7,8 @@ import {MusicComponent} from './views/music/music.component';
 import {MoviesComponent} from './views/movies/movies.component';
 import {VideosComponent} from './views/videos/videos.component';
 import {PageNotFoundComponent} from './views/page-not-found/page-not-found.component';
+import {DocumentaryComponent} from './views/documentary/documentary.component';
+import {LoginComponent} from './views/login/login.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,14 @@ const routes: Routes = [
   {
     path: 'videos',
     component: VideosComponent
+  },
+  {
+    path: 'documentary',
+    component: DocumentaryComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',

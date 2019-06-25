@@ -1,6 +1,6 @@
 <section class="view relative w-full h-full">
   <div class="center-container">
-    <form (submit)="authenticate($event)" action="#" [formGroup]="formField" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mx-auto">
+    <form (submit)="authenticate($event)" action="#" [formGroup]="formField" class="bg-white rounded px-8 pt-6 pb-8 mb-4 mx-auto">
       <div class="form-header">
         <p class="text-center"><img class="logo" src="../../../assets/images/logo.png" alt=""></p>
         <h3 class="text-red-dark text-center my-3">ATALAKU<small style="font-size: 0.5rem;">Admin</small></h3>
@@ -9,7 +9,8 @@
         <label [ngClass]="{'text-red': username.invalid && (username.dirty || username.touched)}" class="block text-grey-darker text-sm font-bold mb-2" for="username">
           Username
         </label>
-        <input [ngClass]="{'border-red': username.invalid && (username.dirty || username.touched)}" formControlName="username" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+        <input [ngClass]="{'border-red': username.invalid && (username.dirty || username.touched)}" formControlName="username"
+               class="bg-grey-lightest appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-red" id="username" type="text" placeholder="Username">
         <p *ngIf="username.invalid && (username.dirty || username.touched)" class="text-red text-xs italic">Please insert a valid username.</p>
       </div>
       <div class="mb-6">
@@ -17,7 +18,7 @@
           Password
         </label>
         <input [ngClass]="{'border-red': password.invalid && (password.dirty || password.touched)}" formControlName="password"
-               class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+               class="bg-grey-lightest appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:bg-white focus:border-red" id="password" type="password" placeholder="******************">
         <p *ngIf="password.invalid && (password.dirty || password.touched)" class="text-red text-xs italic">Please insert a valid password password.</p>
       </div>
       <div class="flex items-center justify-center">
@@ -27,7 +28,7 @@
       </div>
     </form>
     <p class="text-center text-grey text-xs">
-      ©2019 Atalaku Corp. All rights reserved.
+      ©2019 Atalaku. All rights reserved.
     </p>
   </div>
 </section>

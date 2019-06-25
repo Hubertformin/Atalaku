@@ -20,6 +20,9 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
 import { MoviesComponent } from './views/movies/movies.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
+import { DocumentaryComponent} from './views/documentary/documentary.component';
+import {LoginComponent} from './views/login/login.component';
+import {VideoContainerComponent} from './components/video-container/video-container.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { HeaderComponent } from './components/header/header.component';
     MoviesComponent,
     PageNotFoundComponent,
     HeaderComponent,
+    DocumentaryComponent,
+    LoginComponent,
+    VideoContainerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

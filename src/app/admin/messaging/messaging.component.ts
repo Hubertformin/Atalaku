@@ -15,6 +15,7 @@ export class MessagingComponent implements OnInit {
   sendMessageIcon = faEnvelope;
   forwardIcon = faReply;
   deleteIcon = faTrash;
+  htmlContent: any;
 
   constructor(
     private titleService: Title

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-subscription',
@@ -9,10 +10,14 @@ import {ActivatedRoute} from '@angular/router';
 export class SubscriptionComponent implements OnInit {
   monthlyPlan: boolean;
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title
   ) { }
 
   ngOnInit() {
+    // set title
+    this.titleService.setTitle('Subscribe -ATALAKU');
+    // setting default plan to monthly
     this.monthlyPlan = true;
     // get route plan passed
     this.activatedRoute.paramMap.subscribe((map: any) => {

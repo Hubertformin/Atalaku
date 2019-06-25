@@ -6,6 +6,7 @@ import { DataTablesModule } from 'angular-datatables';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NotifierModule } from 'angular-notifier';
+import { NgxEditorModule } from 'ngx-editor';
 
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -56,6 +57,7 @@ import { GenresComponent } from './genres/genres.component';
     ReactiveFormsModule,
     FontAwesomeModule,
     DataTablesModule,
+    NgxEditorModule,
     NotifierModule.withConfig({
       theme: 'material',
       position: {

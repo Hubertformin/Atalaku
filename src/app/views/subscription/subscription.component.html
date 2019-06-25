@@ -1,10 +1,12 @@
-<div class="overlay">
-  <div class="center-container">
-    <div class="plan">
-      <div class="_tab" [ngClass]="{'active': monthlyPlan}" (click)="togglePlan(true)">FCFA 5,000/Mo</div>
-      <div class="_tab" [ngClass]="{'active': !monthlyPlan}" (click)="togglePlan(false)">FCFA 57,600/Yr</div>
-    </div>
-    <div class="form">
+<app-header></app-header>
+<section id="view">
+  <div class="overlay">
+    <div class="center-container">
+      <div class="plan">
+        <div class="_tab" [ngClass]="{'active': monthlyPlan}" (click)="togglePlan(true)">FCFA 5,000/Mo</div>
+        <div class="_tab" [ngClass]="{'active': !monthlyPlan}" (click)="togglePlan(false)">FCFA 57,600/Yr</div>
+      </div>
+      <div class="form">
         <mat-tab-group>
           <mat-tab label="Card">
             <p class="text-center"><img src="../../../assets/images/creditcard.png" style="width: 28%;padding: 10px 0;"></p>
@@ -44,9 +46,9 @@
           </mat-tab>
           <mat-tab label="PayPal">
             <form action="#">
-                <p class="text-center my-2">
-                  <img src="../../../assets/images/paypal.png" alt="paypallogo">
-                </p>
+              <p class="text-center my-2">
+                <img src="../../../assets/images/paypal.png" alt="paypallogo">
+              </p>
               <div class="text-center">
                 <button class="bg-blue-dark hover:bg-blue-darker text-white py-3 px-4 rounded w-1/2">Continue</button>
               </div>
@@ -65,7 +67,8 @@
             </form>
           </mat-tab>
         </mat-tab-group>
+      </div>
     </div>
-  </div>
 
-</div>
+  </div>
+</section>

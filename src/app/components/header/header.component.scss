@@ -4,6 +4,7 @@ nav {
   height: 55px;
   border-bottom: 1px solid #dddddd;
   color: $font-color;
+  position: relative;
   background-color: inherit;
   ul {
     list-style-type: none;
@@ -11,10 +12,17 @@ nav {
     padding-left: 20%;
     position: relative;
     margin: 0;
+    display: inline-block;
+    &.pull-right {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
 
     li {
       height: 100%;
       display: inline-block;
+      padding: 0 15px;
       line-height: 50px;
 
       &.brand_name {
@@ -33,16 +41,8 @@ nav {
           margin-bottom: -5%;
         }
       }
-
-      &.user_account {
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-
       a {
-        display: block;
-        padding: 0 20px;
+        // display: block;
         height: 100%;
         text-align: center;
         text-decoration: none;
@@ -51,15 +51,16 @@ nav {
 
         &.active {
           // background-color: rgba(0, 0, 0, 0.9);
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            border-bottom: 2px solid $accent-color;
-            transform-origin: center;
-          }
+          color: $accent-color;
+          //&::after {
+          //  content: '';
+          //  position: absolute;
+          //  bottom: -1px;
+          //  left: 0;
+          //  right: 0;
+          //  border-bottom: 4px solid $accent-color;
+          //  transform-origin: center;
+          //}
         }
       }
     }

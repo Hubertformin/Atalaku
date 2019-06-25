@@ -1,0 +1,11 @@
+ul.options-class {
+  list-style-type: none;
+  li {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #eeeeee;
+    }
+  }
+}

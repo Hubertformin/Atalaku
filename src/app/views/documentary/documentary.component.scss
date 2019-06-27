@@ -1,0 +1,25 @@
+
+.item-view {
+  padding-right: 0 !important;
+}
+.card {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 0.75rem;
+  .header {
+    height: 60%;
+    width: 100%;
+    background-color: #eee;
+  }
+  .body {
+    padding: 1rem 0.75rem;
+    border-top: 1px solid #dddddd;
+    width: 100%;
+    .card_body_title {
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow-x: hidden;
+    }
+  }
+}

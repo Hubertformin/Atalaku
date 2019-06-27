@@ -1,22 +1,67 @@
-<section id="audio_player">
-  <div class="banner">
-    <div class="image">
-      <img src="../../../assets/images/mboko.jpeg" alt="">
+<section id="audio_player" [ngStyle]="{'background': playerColor}" [ngClass]="{'expanded': playerMaxMode, 'mini': !playerMaxMode}">
+  <div id="playback">
+    <div id="banner">
+      <div class="image">
+        <img [src]="tracks[state.trackInfo.currentTrack].albumArt" alt="album_art">
+      </div>
+      <div class="song-info">
+        <p class="song-title">{{ tracks[state.trackInfo.currentTrack].title}}</p>
+        <p class="album">{{ tracks[state.trackInfo.currentTrack].album}}</p>
+        <p class="artist"><small>{{ tracks[state.trackInfo.currentTrack].artist}}</small></p>
+      </div>
     </div>
-    <div class="song-info">
-      <h4 class="song-title">Sock Sock</h4>
-      <h5 class="artist">Jovi</h5>
+    <div id="controls">
+      <div id="track">
+        <div id="currentTime"><small>{{state.trackInfo.duration < 3600 ? state.trackInfo.readableCurrentTime.substr(3) : state.trackInfo.readableCurrentTime}}</small></div>
+        <div id="progress_bar"><mat-slider color="warn" (change)="progressChanged($event)" min="0" [max]="state.trackInfo.duration" step="1" [value]="state.trackInfo.currentTime"></mat-slider></div>
+        <div id="duration_time"><small>{{state.trackInfo.duration < 3600 ? state.trackInfo.readableDuration.substr(3) : state.trackInfo.readableDuration}}</small></div>
+      </div>
+      <div id="buttons">
+        <!--repeat icon-->
+        <button id="shuffleBtn" mat-button [ngClass]="{'active': playBackOptions.shuffle}" (click)="togglePlayBackShuffle()"><fa-icon [icon]="shuffleIcon"></fa-icon></button>
+        <!--previous track button-->
+        <button id="previousBtn" mat-button [disabled]="state.isFirstTrack && !playBackOptions.shuffle" (click)="previousSong()"><fa-icon [icon]="previousIcon" size="1x"></fa-icon></button>
+        <!--play button-->
+        <button id="playBtn" mat-button  (click)="playerPlayPause()">
+          <fa-icon [icon]="playIcon" *ngIf="!state.playing"></fa-icon>
+          <fa-icon [icon]="pauseIcon" *ngIf="state.playing"></fa-icon>
+        </button>
+        <!--next track button-->
+        <button id="nextBtn" mat-button [disabled]="state.isLastTrack && !playBackOptions.shuffle" (click)="nextSong()"><fa-icon [icon]="nextIcon" size="1x"></fa-icon></button>
+        <!--repeat button-->
+        <button id="repeatBtn" mat-button (click)="playBackRepeat()">
+          <img *ngIf="!playBackOptions.repeat_once" src="../../../assets/images/repeat-icon.png" height="20" width="20" alt="icon">
+          <img *ngIf="playBackOptions.repeat_once" src="../../../assets/images/repeat-one-icon.png" height="20" width="20" alt="icon">
+        </button>
+      </div>
+    </div>
+    <div id="extensions">
+      <div class="extensions-container">
+        <button id="likeBtn" mat-button title="Like" (click)="toggleLikeTrack(state.trackInfo.currentTrack)" [ngClass]="{'active': tracks[state.trackInfo.currentTrack].liked}"><fa-icon [icon]="likeIcon" size="1x"></fa-icon></button>
+        <button id="playlistBtn" (click)="togglePlaylist()" mat-button title="Playlist"><img src="../../../assets/images/playlist.png" height="20" width="20" alt="icon"></button>
+        <button id="miniPlayerBtn" (click)="togglePlayerMode()" mat-button>
+          <img *ngIf="playerMaxMode" src="../../../assets/images/mini-player.png" height="20" width="20" alt="icon" title="Mini player">
+          <img *ngIf="!playerMaxMode" src="../../../assets/images/expanded-player.png" height="20" width="20" alt="icon" title="Expand">
+        </button>
+        <button id="themeBtn" mat-button title="Theme" (click)="changeTheme()"><fa-icon [icon]="themeIcon" size="1x"></fa-icon></button>
+      </div>
     </div>
   </div>
-  <div class="controls">
-    <div class="track">
-      <section class="bar"><span class="ball"></span></section>
-    </div>
-    <div class="buttons">
-      <button mat-button><fa-icon [icon]="previousIcon"></fa-icon></button>
-      <button mat-button><fa-icon [icon]="playIcon"></fa-icon></button>
-      <button mat-button><fa-icon [icon]="nextIcon"></fa-icon></button>
+  <div id="playlist">
+    <div *ngFor="let track of tracks; let i = index" class="playlist-item row py-2">
+      <div class="image-meta">
+        <div class="image-placeholder">
+          <img [src]="track.albumArt" class="h-full w-full">
+        </div>
+      </div>
+      <div class="song-meta" [ngClass]="{'playing': state.trackInfo.currentTrack === i}">
+        <p class="song-title">{{track.title}}</p>
+        <p><small>{{track.artist}}</small></p>
+      </div>
+      <div class="icon col-sm-2"><button (click)="playlistPlayTrack(i)" mat-button>
+        <fa-icon [icon]="playIcon" [hidden]="(state.trackInfo.currentTrack === i && state.playing)"></fa-icon>
+        <fa-icon [icon]="pauseIcon" *ngIf="state.trackInfo.currentTrack === i && state.playing"></fa-icon>
+      </button></div>
     </div>
   </div>
-  <div class="extensions"></div>
 </section>

@@ -1,0 +1,21 @@
+.center-container {
+  width: 21%;
+}
+
+img.logo {
+  height: 50px;
+  width: 50px;
+}
+.input-field {
+  margin: 0;
+  position: relative;
+  padding: 1.7rem 0 0;
+  label {
+    position: absolute;
+    top: 0;
+  }
+}
+
+input:focus + label {
+  color: #e3342f;
+}

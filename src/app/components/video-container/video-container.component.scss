@@ -1,0 +1,54 @@
+#player-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  // background-color: rgba(0, 0, 0, 0.5);
+  background-color: #eeeeee;
+  #player {
+    height: 100%;
+    width: 100%;
+    video {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  #playlist_opener {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 45px;
+    background-color: transparent;
+    &:hover + #playlist {
+      display: block;
+    }
+  }
+  #playlist {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    color: #ffffff;
+    width: 25%;
+    background-color: rgba(0, 0, 0, 0.7);
+    &:hover {
+      display: block;
+    }
+    .body {
+      padding-top: 40px;
+      height: 100%;
+      overflow-y: auto;
+      .list {
+        border-bottom: 1px solid #333333;
+        width: 100%;
+        height: auto;
+        img {
+          border: 2.5px solid #dddddd;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<section>
+  <app-header></app-header>
+</section>
+<section id="view">
+  <!--header-->
+  <section id="list-header">
+    <div class="text">
+      <h2>New songs</h2>
+    </div>
+    <button class="floating-btn" color="primary" mat-fab><fa-icon [icon]="playIcon"></fa-icon></button>
+  </section>
+  <div id="list-body">
+    <h3 class="py-3 px-4 text-grey-dark border-b mb-3"><small>Showing {{iter.length}} songs</small></h3>
+    <div id="list-container">
+      <!--list item-->
+      <div class="list-item" *ngFor="let i of iter">
+        <div class="img_container">
+          <p class="img rounded-full"></p>
+        </div>
+        <div class="details">
+          <h4>Magaguli</h4>
+          <p><small>WaxDey x Mr leo x Locko</small></p>
+        </div>
+        <div class="actions">
+          <fa-icon [icon]="playIcon"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

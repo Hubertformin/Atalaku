@@ -2,11 +2,57 @@
   <app-navigation></app-navigation>
 </section>
 <section class="detailed-pane">
-  <div class="pt-8 pb-12 px-12 bg-blue-darker text-white">
+  <div class="header bg-blue-darker text-white">
     <h2>Video Music dashboard</h2>
-    <p>Create update, delete , music files</p>
   </div>
-  <div class="p-3 text-right">
+  <div class="action p-3 text-right">
     <a routerLink="/admin/add-music-video" class="bg-blue-dark text-white" mat-raised-button>Add music</a>
+  </div>
+  <div class="body border-t">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Genre</th>
+        <th>Views</th>
+        <th>Likes</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let music of musicVideoData;let i = index;">
+        <td><img class="rounded-full" src="../../../assets/images/mboko.jpeg" height="36" width="36" alt="logo"></td>
+        <td>{{music.title}}</td>
+        <td>{{music.artist}}</td>
+        <td>{{music.genre}}</td>
+        <td>{{music.views}}</td>
+        <td>{{music.likes}}</td>
+        <td>{{music.year}}</td>
+        <td>
+          <button mat-button>
+            <fa-icon [icon]="createIcon"></fa-icon>
+          </button>
+          <button mat-button>
+            <fa-icon [icon]="deleteIcon"></fa-icon>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Genre</th>
+        <th>Views</th>
+        <th>Likes</th>
+        <th>Year</th>
+        <th></th>
+      </tr>
+      </tfoot>
+    </table>
   </div>
 </section>

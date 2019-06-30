@@ -62,7 +62,8 @@ import {
     MatProgressBarModule,
     MatRadioModule,
     MatListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatListModule
   ]
 })
-export class MaterialComponentsModuleModule { }
+export class CustomModule { }

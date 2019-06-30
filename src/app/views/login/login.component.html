@@ -4,42 +4,38 @@
   <div class="center-container text-center">
     <img class="logo" src="../../../assets/images/logo.png" alt="">
     <h3 class="text-theme-color my-3">ATALAKU</h3>
-    <form class="w-full">
-      <div class="mb-6">
+    <form class="w-full" [formGroup]="loginForm" (submit)="authenticate($event)">
+      <!--error-->
+      <p [ngClass]="{'visible': errorMode.state, 'invisible': !errorMode.state}" class="bg-red-dark py-1 px-4 rounded text-white mb-3">
+        <small>{{errorMode.message}}</small>
+      </p>
+      <div class="mb-2">
         <div class="input-field text-left">
-          <input placeholder="Email or Username"
+          <input placeholder="Email" formControlName="email" required="required"
           class="bg-grey-lightest appearance-none border-2 border-grey-lighter rounded w-full py-2 px-4 text-grey-darkest leading-tight focus:outline-none focus:bg-white focus:border-red" id="inline-full-name" type="text" />
           <label class="block text-grey-dark font-bold mb-1 md:mb-0 pr-4" for="inline-full-name">
-            Email or Username
+            Email
           </label>
         </div>
       </div>
-      <div class="mb-6">
+      <div class="mb-3">
         <div class="input-field text-left">
-          <input
+          <input formControlName="password" required="required"
           class="bg-grey-lightest appearance-none border-2 border-grey-lighter rounded w-full py-2 px-4 text-grey-darkest leading-tight focus:outline-none focus:bg-white focus:border-red" id="inline-username" type="password" placeholder="******************">
           <label class="block text-grey-dark font-bold mb-1 md:mb-0 pr-4" for="inline-username">
             Password
           </label>
         </div>
       </div>
-      <div class="mb-6 pl-8">
-        <label class="block text-grey-dark font-bold">
-          <input class="mr-2 leading-tight" type="checkbox">
-          <span class="text-sm">
-        Keep me signed in.
-      </span>
-        </label>
-      </div>
       <div class="">
         <div class="">
-          <button class="shadow theme-color hover:bg-green focus:shadow-outline focus:outline-none text-white font-bold py-3 px-6 rounded" type="button">
+          <button id="loginBtn" class="shadow theme-color hover:bg-green focus:shadow-outline focus:outline-none text-white font-bold py-3 px-6 rounded" type="submit">
             Login
           </button>
         </div>
       </div>
     </form>
-    <p class="pt-32 px-4 text-center text-grey text-xs">
+    <p class="mt-2 px-4 text-center text-grey text-xs">
       ©2019 Atalaku. All rights reserved.
     </p>
   </div>

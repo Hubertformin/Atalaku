@@ -2,12 +2,45 @@
   <app-navigation></app-navigation>
 </section>
 <section class="detailed-pane">
-  <div class="pt-8 pb-12 px-12 bg-purple-darker text-white">
+  <div class="header bg-purple-darker text-white">
     <h2>Movies dashboard</h2>
-    <p>Create update, delete movies</p>
   </div>
-  <div class="p-3 text-right">
+  <div class="action text-right">
     <a routerLink="/admin/add-movie" class="bg-purple hover:bg-purple-dark text-white" mat-raised-button>Add music</a>
+  </div>
+  <div class="body">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Duration</th>
+        <th>Release Date</th>
+        <th>Added</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let movie of movieData;let i = index;">
+        <td><img class="rounded" src="../../../assets/images/a6b7d86f-09a3-4563-8686-674cd0c63591-f986fa34.jpg" height="40" width="40" alt="logo"></td>
+        <td>{{movie.title}}</td>
+        <td>{{movie.rating}}</td>
+        <td>{{movie.duration}}</td>
+        <td>{{movie.release_date}}</td>
+        <td>{{movie.createdAt | timeAgo}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Duration</th>
+        <th>Release Date</th>
+        <th>Added</th>
+      </tr>
+      </tfoot>
+    </table>
   </div>
 
 </section>

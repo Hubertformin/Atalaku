@@ -2,6 +2,9 @@ import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/c
 import {Title} from '@angular/platform-browser';
 import {DataTableDirective} from 'angular-datatables';
 import {Subject} from 'rxjs';
+import {HttpService} from '../../providers/http.service';
+import * as moment from 'moment';
+import {UsersModel} from '../../models/Users.model';
 
 @Component({
   selector: 'app-users-dashboard',
@@ -18,13 +21,25 @@ export class UsersDashboardComponent implements OnInit, OnDestroy, AfterViewInit
   // thus we ensure the data is fetched before rendering
   // @ts-ignore
   dtTrigger: Subject = new Subject();
+  // users data
+  users: UsersModel[];
 
   constructor(
-    private titleService: Title
+    private titleService: Title,
+    private httpService: HttpService
   ) { }
 
   ngOnInit() {
     this.titleService.setTitle('Registered users - ATALAKU(Admin)');
+    // get users
+    this.httpService.getAllUsers()
+      .subscribe((data: UsersModel[]) => {
+        data.map(el => {
+          return el.joinedDate = moment(el.createdAt, 'YYYYMMDD').fromNow();
+        });
+        this.users = data;
+        this.renderer();
+      }, error1 => console.error(error1));
     // table options
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -50,3 +65,4 @@ export class UsersDashboardComponent implements OnInit, OnDestroy, AfterViewInit
   }
 
 }
+

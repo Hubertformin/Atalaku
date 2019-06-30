@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {HttpService} from '../../providers/http.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {FormBuilder, Validators} from '@angular/forms';
+import {UsersModel} from '../../models/Users.model';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-login',
@@ -9,35 +11,48 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  loginForm = this.formBuilder.group({
+    email: [null, Validators.required],
+    password: [null, Validators.required]
+  });
+  // error
+  errorMode = {
+    state: false,
+    message: ''
+  };
 
   constructor(
     private titleService: Title,
     private httpService: HttpService,
-    private http: HttpClient
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
     this.titleService.setTitle('Login -ATALAKU');
-    /*this.httpService.getAllUsers()
-      .subscribe((data) => {
-        console.log(data);
-      }, error1 => console.error(error1));*/
-    /*this.http.get('http://localhost:5000/', {headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': 'authkey',
-        'userid': '1'
-      })})
-      .subscribe((data) => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      });*/
-    fetch('http://localhost:5000/all-users', {headers: {'Acess-Control-Allow-Origin': '*'}})
-      .then((data) => {
-        console.log(data.json());
-      }).catch((error) => {
-        console.error(error);
-    });
   }
 
+  authenticate(e) {
+    e.preventDefault();
+    console.log('sending request...');
+    this.httpService.getUserByEmail(this.loginForm.get('email').value)
+      .subscribe((data: UsersModel) => {
+        // authenticate user
+        console.log(data);
+        if (!data) {
+          this.setError('Account does not exist!');
+        } else {
+          if (data.password !== this.loginForm.get('password').value) {
+            this.setError('Password incorrect!');
+          }
+        }
+      }, error1 => {
+        console.error(error1);
+        this.setError('Unknown Error, Try again later!');
+      });
+  }
+  // set error
+  setError(msg: string): void {
+    this.errorMode.state = true;
+    this.errorMode.message = msg;
+  }
 }

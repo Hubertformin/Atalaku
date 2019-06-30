@@ -1,5 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {faBackward, faChessBoard, faFastBackward, faFastForward, faForward, faHeart, faLayerGroup, faListAlt, faPause, faPlay, faRandom} from '@fortawesome/free-solid-svg-icons';
+import {
+  faFastBackward,
+  faFastForward,
+  faHeart,
+  faPalette,
+  faPause,
+  faPlay,
+  faRandom
+} from '@fortawesome/free-solid-svg-icons';
 import {AudioStream, RxJSAudioService, StreamState} from 'rxjs-audio';
 import {MatSliderChange} from '@angular/material';
 import * as $ from 'jquery';
@@ -25,7 +33,7 @@ export class AudioPlayerComponent implements OnInit {
   nextIcon = faFastForward;
   pauseIcon = faPause;
   likeIcon = faHeart;
-  themeIcon = faChessBoard;
+  themeIcon = faPalette;
   shuffleIcon = faRandom;
   // rxjs audio service
   rxjsAudioService = new RxJSAudioService();

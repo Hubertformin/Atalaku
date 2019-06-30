@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {SubscriptionComponent} from './views/subscription/subscription.component';
 import {WatchComponent} from './views/watch/watch.component';
-import {MusicComponent} from './views/music/music.component';
+import {MusicComponent} from './views/music/music-home/music.component';
 import {MoviesComponent} from './views/movies/movies.component';
 import {VideosComponent} from './views/videos/videos.component';
 import {PageNotFoundComponent} from './views/page-not-found/page-not-found.component';
 import {DocumentaryComponent} from './views/documentary/documentary.component';
 import {LoginComponent} from './views/login/login.component';
+import {TrendingMusicComponent} from './views/music/trending-music/trending-music.component';
+import {NewMusicComponent} from './views/music/new-music/new-music.component';
 
 const routes: Routes = [
   {
@@ -26,7 +28,15 @@ const routes: Routes = [
   },
   {
     path: 'music',
-    component: MusicComponent
+    component: MusicComponent,
+  },
+  {
+    path: 'music/new',
+    component: NewMusicComponent
+  },
+  {
+    path: 'music/trending',
+    component: TrendingMusicComponent
   },
   {
     path: 'movies',

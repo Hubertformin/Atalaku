@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 import {Title} from '@angular/platform-browser';
+import {HttpService} from '../../providers/http.service';
 
 @Component({
   selector: 'app-services',
@@ -11,7 +12,8 @@ export class ServicesComponent implements OnInit {
   editIcon = faPencilAlt;
 
   constructor(
-    private titleService: Title
+    private titleService: Title,
+    private httpService: HttpService
   ) { }
 
   ngOnInit() {

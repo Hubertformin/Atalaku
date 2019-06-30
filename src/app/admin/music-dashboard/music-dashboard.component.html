@@ -2,11 +2,50 @@
   <app-navigation></app-navigation>
 </section>
 <section class="detailed-pane">
-  <div class="pt-8 pb-12 px-12 bg-red-darker text-white">
+  <div class="header bg-red-darker text-white">
     <h2>Music dashboard</h2>
-    <p>Create update, delete , music files</p>
   </div>
-  <div class="p-3 text-right">
+  <div class="action text-right">
     <a routerLink="/admin/add-music" class="bg-red hover:bg-red-dark text-white" mat-raised-button>Add music</a>
+  </div>
+  <div class="body">
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Album</th>
+          <th>Genre</th>
+          <th>Plays</th>
+          <th>Likes</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let music of musicData;let i = index;">
+          <td><img class="rounded-full" src="../../../assets/images/magufuli.jpeg" height="40" width="40" alt="logo"></td>
+          <td>{{music.title}}</td>
+          <td>{{music.artist}}</td>
+          <td>{{music.album}}</td>
+          <td>{{music.genre}}</td>
+          <td>{{music.views}}</td>
+          <td>{{music.likes}}</td>
+          <td>{{music.year}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Album</th>
+        <th>Genre</th>
+        <th>Plays</th>
+        <th>Likes</th>
+        <th>Year</th>
+      </tr>
+      </tfoot>
+    </table>
   </div>
 </section>

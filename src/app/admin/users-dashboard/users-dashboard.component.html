@@ -3,7 +3,7 @@
 </section>
 <section class="detailed-pane">
   <div id="header" class="bg-orange-dark text-white">
-    <h2>Users</h2>
+    <h2>UsersModel</h2>
     <p>Manage registered users.</p>
   </div>
   <div id="body" class="px-2 py-3">
@@ -14,14 +14,16 @@
           <th>Email</th>
           <th>Plan</th>
           <th>Country/Region</th>
+          <th>Joined</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Hubert</td>
-          <td>hformin@gmail.com</td>
-          <td>Gold</td>
-          <td>CM</td>
+        <tr *ngFor="let user of users; let i = index;">
+          <td>{{user.username}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.subscriptionId}}</td>
+          <td>{{user.country}}</td>
+          <td>{{user.joinedDate}}</td>
         </tr>
       </tbody>
       <tfoot>
@@ -30,6 +32,7 @@
         <th>Email</th>
         <th>Plan</th>
         <th>Country/Region</th>
+        <th>Joined</th>
       </tr>
       </tfoot>
     </table>

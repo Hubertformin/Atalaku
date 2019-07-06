@@ -1,4 +1,4 @@
-@import "../../../../src/app/theme/theme";
+@import "../../../theme/theme";
 .overlay {
   height: 60vh;
   overflow-y: hidden;
@@ -62,4 +62,9 @@
       padding-right: 0 !important;
     }
   }
+}
+
+.more_details {
+  position: absolute;
+  top: 36%;
 }

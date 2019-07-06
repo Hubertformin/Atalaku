@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
-import { ActivatedRoute } from '@angular/router';
+import {OwlOptions} from 'ngx-owl-carousel-o';
+import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import {Title} from '@angular/platform-browser';
 import {HttpService} from '../../../providers/http.service';
-import {MusicModel} from '../../../models/Music.model';
-import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import * as Chance from 'chance';
 
 @Component({
-  selector: 'app-music',
-  templateUrl: './music.component.html',
-  styleUrls: ['./music.component.scss']
+  selector: 'app-movies',
+  templateUrl: './movies.component.html',
+  styleUrls: ['./movies.component.scss']
 })
-export class MusicComponent implements OnInit {
- color: 'red';
+export class MoviesComponent implements OnInit {
+  color: 'red';
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -63,7 +62,8 @@ export class MusicComponent implements OnInit {
   };
   // icons
   chevronRight = faChevronRight;
-
+  movieData: any[] = [];
+  random = new Chance();
 
   constructor(
     private titleService: Title,
@@ -71,11 +71,21 @@ export class MusicComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle('MUSIC HOME - ATALAKU');
-    this.httpService.getAllMusic()
-      .subscribe((data: MusicModel) => {
+    this.titleService.setTitle('MOVIES HOME - ATALAKU');
+    this.httpService.getAllMovies()
+      .subscribe((data: any) => {
+        data = data.map(el => {
+          el.url = `/movies/watch/mYL0tadHFQTc47j4H#${el.id}#${this.getRandomString(7)}`;
+          return el;
+        });
+        this.movieData = data;
         console.log(data);
       });
+  }
+
+  //
+  getRandomString(length: number) {
+    return this.random.string({length: length});
   }
 
 }

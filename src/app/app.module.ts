@@ -16,25 +16,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { SubscriptionComponent } from './views/subscription/subscription.component';
-import { WatchComponent } from './views/watch/watch.component';
-import { VideosComponent } from './views/videos/videos.component';
+import { WatchMovieComponent } from './views/movies/watch-movie/watch-movie.component';
+import { VideosComponent } from './views/videos/video-home/videos.component';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
-import { MoviesComponent } from './views/movies/movies.component';
+import { MoviesComponent } from './views/movies/movies-home/movies.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { HeaderComponent } from './components/header/header.component';
-import { DocumentaryComponent} from './views/documentary/documentary.component';
+import { DocumentaryComponent} from './views/documentary/documentary-home/documentary.component';
 import {LoginComponent} from './views/login/login.component';
 import {VideoContainerComponent} from './components/video-container/video-container.component';
 import {MusicComponent} from './views/music/music-home/music.component';
 import { TrendingMusicComponent } from './views/music/trending-music/trending-music.component';
 import { NewMusicComponent } from './views/music/new-music/new-music.component';
+import { AlbumsComponent } from './views/music/albums/albums.component';
+import { SelectedAlbumComponent } from './views/music/selected-album/selected-album.component';
+import { WatchVideoComponent } from './views/videos/watch-video/watch-video.component';
+import { VideoSearchBarComponent } from './views/videos/video-search-bar/video-search-bar.component';
+import { WatchDocumentaryComponent } from './views/documentary/watch-documentary/watch-documentary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SubscriptionComponent,
-    WatchComponent,
+    WatchMovieComponent,
     VideosComponent,
     AudioPlayerComponent,
     MoviesComponent,
@@ -46,6 +51,11 @@ import { NewMusicComponent } from './views/music/new-music/new-music.component';
     VideoContainerComponent,
     TrendingMusicComponent,
     NewMusicComponent,
+    AlbumsComponent,
+    SelectedAlbumComponent,
+    WatchVideoComponent,
+    VideoSearchBarComponent,
+    WatchDocumentaryComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

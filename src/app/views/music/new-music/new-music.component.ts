@@ -10,7 +10,12 @@ import {faPlay} from '@fortawesome/free-solid-svg-icons';
 })
 export class NewMusicComponent implements OnInit {
   playIcon = faPlay;
-  iter = new Array(30);
+  musicData: any[] = [];
+  playList: any[];
+  playerAction = {
+    state: false,
+    active: false,
+  };
 
   constructor(
     private titleService: Title,
@@ -19,6 +24,24 @@ export class NewMusicComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('New songs - ATALAKU');
+    this.httpService.getAllMusic()
+      .subscribe((data: any[]) => {
+        console.log(data);
+        this.musicData = data;
+      });
   }
 
+  playSong(index: number) {
+    this.playerAction.active = true;
+    this.playList = [this.musicData[index]];
+  }
+
+  playPlayList() {
+    this.playerAction.active = true;
+    this.playList = this.musicData;
+  }
+
+  watchState(state: any) {
+    this.playerAction.state = state;
+  }
 }

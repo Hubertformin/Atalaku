@@ -12,7 +12,12 @@ import {MusicModel} from '../../../models/Music.model';
 export class TrendingMusicComponent implements OnInit {
   playIcon = faPlay;
   pauseIcon = faPause;
-  iter = new Array(10);
+  musicData: any[] = [];
+  playerAction = {
+    active: false,
+    state: null
+  };
+  playList: any[];
 
   constructor(
     private titleService: Title,
@@ -22,11 +27,30 @@ export class TrendingMusicComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('Trending songs - ATALAKU');
     this.httpService.getAllMusic()
-      .subscribe((data: MusicModel) => {
+      .subscribe((data: any[]) => {
         console.log(data);
+        data.map(el => {
+          el.cdn_link = '../../../assets/bella.mp3';
+          el.thumbnail_url = '../../../assets/images/wanshey.jpeg';
+        });
+        this.musicData = data;
       }, error1 => {
         console.error(error1);
       });
+  }
+
+  playSong(index: number) {
+    this.playerAction.active = true;
+    this.playList = [this.musicData[index]];
+  }
+
+  playPlayList() {
+    this.playerAction.active = true;
+    this.playList = this.musicData;
+  }
+
+  watchState(value) {
+    this.playerAction.state = value;
   }
 
 }

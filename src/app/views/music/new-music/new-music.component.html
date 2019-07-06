@@ -7,24 +7,31 @@
     <div class="text">
       <h2>New songs</h2>
     </div>
-    <button class="floating-btn" color="primary" mat-fab><fa-icon [icon]="playIcon"></fa-icon></button>
+    <button class="floating-btn" color="primary" mat-fab (click)="playPlayList()"><fa-icon [icon]="playIcon"></fa-icon></button>
   </section>
   <div id="list-body">
-    <h3 class="py-3 px-4 text-grey-dark border-b mb-3"><small>Showing {{iter.length}} songs</small></h3>
+    <h3 class="py-3 px-4 text-grey-dark border-b mb-3"><small>Showing {{musicData.length}} songs. Scroll to bottom to load more pages</small></h3>
     <div id="list-container">
       <!--list item-->
-      <div class="list-item" *ngFor="let i of iter">
+      <div class="list-item" *ngFor="let music of musicData;let i = index;">
         <div class="img_container">
           <p class="img rounded-full"></p>
         </div>
         <div class="details">
-          <h4>Magaguli</h4>
-          <p><small>WaxDey x Mr leo x Locko</small></p>
+          <h4>{{music.title}}</h4>
+          <p><span>{{music.album_artist}} ft {{music.artist}}</span></p>
+          <p><small>{{music.year}}</small></p>
         </div>
         <div class="actions">
-          <fa-icon [icon]="playIcon"></fa-icon>
+          <button mat-button (click)="playSong(i)">
+            <fa-icon [icon]="playIcon"></fa-icon>
+          </button>
         </div>
       </div>
     </div>
+  </div>
+  <!--audio player-->
+  <div class="player" *ngIf="playerAction.active">
+    <app-audio-player [playList]="playList" (stateChange)="watchState($event)" theme="dark"></app-audio-player>
   </div>
 </section>

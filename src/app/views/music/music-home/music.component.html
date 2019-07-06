@@ -58,7 +58,7 @@
   <section id="body">
     <!-- Trending -->
     <section class="panel">
-      <div class="head"><h2><a routerLink="/admin/music"><span>Trending</span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
+      <div class="head"><h2><a routerLink="/music/trending"><span>Trending</span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
       <owl-carousel-o [options]="multipleOptions">
         <ng-template carouselSlide>
           <div class="box">
@@ -126,7 +126,7 @@
 
     <!-- New tracks -->
     <section class="panel">
-      <div class="head"><h2><a routerLink="/admin/music"><span>New Tracks</span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
+      <div class="head"><h2><a routerLink="/music/new"><span>New Tracks</span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
       <owl-carousel-o [options]="multipleOptions">
         <ng-template carouselSlide>
           <div class="box">
@@ -262,7 +262,7 @@
 
     <!-- Top grossing albums for you -->
     <section class="panel bg-black">
-      <div class="head"><h2><a routerLink="/admin/music"><span>Top grossing album</span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
+      <div class="head"><h2><a routerLink="/music/albums" style="color: #ffffff"><span>Top grossing album</span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
       <owl-carousel-o [options]="multipleOptions">
         <ng-template carouselSlide>
           <div class="box">
@@ -330,7 +330,7 @@
 
   <!--player-->
   <section id="player" class="shadow-lg">
-    <!--<app-audio-player [banner]="'red'" theme="dark"></app-audio-player>-->
+    <!--<app-audio-player theme="dark"></app-audio-player>-->
   </section>
 
 </section>

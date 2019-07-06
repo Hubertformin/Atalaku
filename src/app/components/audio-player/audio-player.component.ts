@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {
   faFastBackward,
   faFastForward,
@@ -15,9 +15,11 @@ import * as $ from 'jquery';
 interface AudioPlayBack {
   shuffle: boolean;
   repeat_once: boolean;
+  error: boolean;
 }
 
-declare type ColorType = 'red' | 'flag' | 'dark' | undefined;
+declare type ColorType = 'green' | 'flag' | 'dark' | undefined;
+declare type PlayerMode = 'large' | 'mini' | undefined;
 
 @Component({
   selector: 'app-audio-player',
@@ -25,8 +27,10 @@ declare type ColorType = 'red' | 'flag' | 'dark' | undefined;
   styleUrls: ['./audio-player.component.scss']
 })
 export class AudioPlayerComponent implements OnInit {
-  @Input() banner: string;
+  @Input() playList: any[];
   @Input() theme: ColorType;
+  @Input() mode: PlayerMode;
+  @Output() stateChange = new EventEmitter();
   // icons
   previousIcon = faFastBackward;
   playIcon = faPlay;
@@ -38,11 +42,6 @@ export class AudioPlayerComponent implements OnInit {
   // rxjs audio service
   rxjsAudioService = new RxJSAudioService();
   audio: AudioStream;
-  tracks = [
-    {albumArt: '../../../assets/images/wanshey.jpeg', artist: 'Magasco', title: 'Bella', album: 'Uncencsored', url: '../../../assets/bella.mp3', liked: false},
-    {albumArt: '../../../assets/images/magufuli.jpeg', artist: 'Locko', title: 'Ndutu', album: 'Singles', url: '../../../assets/ndutu.mp3', liked: false},
-    {albumArt: '../../../assets/images/mboko.jpeg', artist: 'Blanche Bailey', title: 'BonBon', album: 'Uncensored', url: '../../../assets/bonbon.mp3', liked: false},
-    ];
   state: StreamState = {
     playing: false ,
     isLastTrack: false,
@@ -67,8 +66,8 @@ export class AudioPlayerComponent implements OnInit {
   ngOnInit() {
     // initializing theme..
     switch (this.theme) {
-      case 'red':
-        this.playerColor = '#e3342f';
+      case 'green':
+        this.playerColor = '#238665';
         break;
       case 'flag':
         this.playerColor = 'linear-gradient(to right, #137724, #c51b24, #fdd21f)';
@@ -77,17 +76,29 @@ export class AudioPlayerComponent implements OnInit {
         this.playerColor = '#22292f';
         break;
       default:
-        this.playerColor = '#e3342f';
+        this.playerColor = '#22292f';
         break;
     }
     // initializing player mode
-    this.playerMaxMode = true;
+    switch (this.mode) {
+      case 'mini':
+        this.playerMaxMode = false;
+        break;
+      default:
+        this.playerMaxMode = true;
+        break;
+    }
     // initializing audio
-    this.audio = this.rxjsAudioService.create(this.tracks, {urlKey: 'url'});
+    this.audio = this.rxjsAudioService.create(this.playList, {urlKey: 'cdn_link'});
     this.audio.getState()
       .subscribe((state: StreamState) => {
         // trim seconds
         this.state = state;
+        this.stateChange.emit(state); // emit state to components consuming this component.
+        // set progress of mini player
+        if (!this.playerMaxMode) {
+          this.setMiniPlayerProgress(state.trackInfo.currentTime, state.trackInfo.duration);
+        }
       }, error1 => {
         //
       });
@@ -95,9 +106,10 @@ export class AudioPlayerComponent implements OnInit {
     this.audio.events()
       .subscribe(event => {
         if (event.type === 'canplay') {
-          // this.error = false;
+          this.playBackOptions.error = false;
         } else if (event.type === 'error') {
-          console.log('error occurred!');
+          // handle is error was unable to load
+          this.playBackOptions.error = true;
         }
         if (event.type === 'ended') {
           // if repeat is toggles
@@ -105,7 +117,7 @@ export class AudioPlayerComponent implements OnInit {
             this.audio.play();
           } else if (this.playBackOptions.shuffle) {
             this.shufflePlayList();
-          } else if (this.tracks.length > 1 && !this.audio.isLastPlaying()) {
+          } else if (this.playList.length > 1 && !this.audio.isLastPlaying()) {
             this.audio.next();
             this.audio.play();
           } else {
@@ -117,7 +129,8 @@ export class AudioPlayerComponent implements OnInit {
     // initialize playback
     this.playBackOptions = {
       shuffle: false,
-      repeat_once: false
+      repeat_once: false,
+      error: false
     };
   }
   /**
@@ -159,18 +172,17 @@ export class AudioPlayerComponent implements OnInit {
   shufflePlayList() {
     let index: number;
     do {
-      index = Math.floor(Math.random() * this.tracks.length);
+      index = Math.floor(Math.random() * this.playList.length);
     }
     while (index === this.state.trackInfo.currentTrack);
     this.audio.playAt(index);
-    console.log(index);
   }
   togglePlaylist() {
     $('#playlist').slideToggle('fast');
   }
   // like track
   toggleLikeTrack(index: number) {
-    this.tracks[index].liked = !this.tracks[index].liked;
+    this.playList[index].liked = !this.playList[index].liked;
   }
 
   playlistPlayTrack(i: number) {
@@ -204,5 +216,9 @@ export class AudioPlayerComponent implements OnInit {
   // toggle player mode
   togglePlayerMode() {
     this.playerMaxMode = !this.playerMaxMode;
+  }
+  // set progress of mini player
+  setMiniPlayerProgress(val, max) {
+    $('#app_audio_mini_track').css('width', ((val / max) * 100) + '%');
   }
 }

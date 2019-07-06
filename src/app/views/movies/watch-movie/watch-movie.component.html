@@ -1,0 +1,62 @@
+<section>
+  <app-header></app-header>
+</section>
+<section id="view">
+  <section class="overlay" [ngStyle]="{'background': 'url('+activeMovie.thumbnail_url+')'}">
+    <div class="shader"></div>
+  </section>
+  <section class="info_panel">
+    <div class="content_box row relative">
+      <div class="col-sm-3">
+        <div class="_box px-3 py-4 my-2 border">
+          <small>Release Date</small>
+          <p>{{ activeMovie.release_date | date }}</p>
+        </div>
+        <div class="_box px-3 py-4 my-2 border">
+          <small>Duration</small>
+          <p>{{ activeMovie.duration }}</p>
+        </div>
+        <!-- end of column 3 -->
+      </div>
+      <div class="col-sm-9">
+        <section class="header">
+          <h1 class="title">{{ activeMovie.title }}</h1>
+          <p class="meta_1">
+            <span>{{ activeMovie.genre.name }} |</span>
+            <span>English |</span>
+            <span>{{ 4.3 }} ratings |</span>
+            <span class="box_rated">{{ activeMovie.rating }}</span>
+          </p>
+        </section>
+        <section class="action">
+          <span class="mr-3"><button mat-raised-button color="primary">Watch</button></span>
+          <span class="mr-3"><button (click)="openModal()" mat-raised-button class="theme-color text-white">Trailer</button></span>
+          <span><button mat-raised-button class="bg-grey">Share</button></span>
+        </section>
+        <section class="video-post">
+          <p>{{activeMovie.description}}</p>
+        </section>
+        <section class="related-content">
+          <h3 class="title">More like this</h3>
+          <div class="row">
+            <div class="card col-sm-3"><img src="../../../../assets/images/a905a1c3-9bb3-470d-8fe3-980161326f75-7f9dee80bc55.jpg" alt=""></div>
+            <div class="card col-sm-3"><img src="../../../../assets/images/a6b7d86f-09a3-4563-8686-674cd0c63591-f986fa34.jpg" alt=""></div>
+            <div class="card col-sm-3"><img src="../../../../assets/images/29b506f7-1c72-4bf4-a5cd-166c8ac9659b-112f4d8ebc55.jpg" alt=""></div>
+            <div class="card col-sm-3"><img src="../../../../assets/images/da72c34e-7845-42f8-a288-79f6450f0929-ae77e6704e42.jpg" alt=""></div>
+          </div>
+        </section>
+      </div>
+      <div class="more_details col-sm-3">
+        <!--NON bordered boxes-->
+        <div class="_box px-3 py-4 my-2">
+          <small>Producer</small>
+          <p>{{ activeMovie.producer }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--modal-->
+  <section id="trailer-modal" class="modal modal-container">
+    <div class="content"></div>
+  </section>
+</section>

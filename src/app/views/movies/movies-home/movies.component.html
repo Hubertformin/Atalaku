@@ -1,0 +1,208 @@
+<app-header></app-header>
+<section id="view">
+  <section id="header">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide>
+        <div class="box">
+          <div class="contents full">
+            <div class="text">
+              <h1>Heading</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus ad, aperiam consequatur esse id iure laudantium maxime molestias nostrum porro rem totam ullam veniam vero voluptate voluptatem. Ad, tempora!</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="box">
+          <div class="contents full">
+            <div class="text">
+              <h1>Heading</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus ad, aperiam consequatur esse id iure laudantium maxime molestias nostrum porro rem totam ullam veniam vero voluptate voluptatem. Ad, tempora!</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="box">
+          <div class="contents full">
+            <div class="text">
+              <h1>Second Heading</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus ad, aperiam consequatur esse id iure laudantium maxime molestias nostrum porro rem totam ullam veniam vero voluptate voluptatem. Ad, tempora!</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="box">
+          <div class="contents full">
+            <div class="text">
+              <h1>Third Heading</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus ad, aperiam consequatur esse id iure laudantium maxime molestias nostrum porro rem totam ullam veniam vero voluptate voluptatem. Ad, tempora!</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide>
+        <div class="box">
+          <div class="contents full">
+            <div class="text">
+              <h1>Fourth Heading</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus ad, aperiam consequatur esse id iure laudantium maxime molestias nostrum porro rem totam ullam veniam vero voluptate voluptatem. Ad, tempora!</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </owl-carousel-o>
+  </section>
+  <!---->
+  <section id="body">
+    <!-- Trending -->
+    <section class="panel">
+      <div class="head"><h2><a routerLink="/movies/trending"><span>Trending</span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
+      <owl-carousel-o [options]="multipleOptions">
+        <div *ngFor="let movie of movieData">
+            <ng-template carouselSlide>
+              <a [routerLink]="movie.url">
+                <div class="box">
+                  <div class="card">
+                    <img src="../../../../assets/images/a6b7d86f-09a3-4563-8686-674cd0c63591-f986fa34.jpg" alt="">
+                    <div class="contents">
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </ng-template>
+        </div>
+      </owl-carousel-o>
+    </section>
+
+    <!-- New movies -->
+    <section class="panel">
+      <div class="head"><h2><a routerLink="/movies/new"><span>New Tracks</span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
+      <owl-carousel-o [options]="multipleOptions">
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/a6b7d86f-09a3-4563-8686-674cd0c63591-f986fa34.jpg" alt="">
+              <div class="contents">
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/ba3ce490-6aa7-42e9-b037-1c269dd3c5fb-3a491ced7f87.jpg" alt="">
+              <div class="contents">
+                <div class="text">
+                  <h4>ADAMS World</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/da72c34e-7845-42f8-a288-79f6450f0929-ae77e6704e42.jpg" alt="">
+              <div class="contents">
+                <div class="text">
+                  <h4>MAGUFULI</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/fba0ebba-bbe0-452b-ab3a-155669149458-1d56609dd2aa.jpg" alt="">
+              <div class="contents">
+                <div class="text">
+                  <h4>MBOKO GOD</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/29b506f7-1c72-4bf4-a5cd-166c8ac9659b-112f4d8ebc55.jpg" alt="">
+              <div class="contents">
+                <div class="text">
+                  <h4>MAGUFULI</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </section>
+
+    <!-- Popular on atalaku -->
+    <section class="panel">
+      <div class="head"><h2><a routerLink="/admin/music"><span><span>Popular on ATALAKU</span></span>&nbsp;&nbsp;<fa-icon [icon]="chevronRight"></fa-icon></a></h2></div>
+      <owl-carousel-o [options]="multipleOptions">
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/a6b7d86f-09a3-4563-8686-674cd0c63591-f986fa34.jpg" alt="">
+              <div class="contents">
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/ba3ce490-6aa7-42e9-b037-1c269dd3c5fb-3a491ced7f87.jpg" alt="">
+              <div class="contents">
+                <div class="text">
+                  <h4>ADAMS World</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/da72c34e-7845-42f8-a288-79f6450f0929-ae77e6704e42.jpg" alt="">
+              <div class="contents">
+                <div class="text">
+                  <h4>MAGUFULI</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/fba0ebba-bbe0-452b-ab3a-155669149458-1d56609dd2aa.jpg" alt="">
+              <div class="contents">
+                <div class="text">
+                  <h4>MBOKO GOD</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="box">
+            <div class="card">
+              <img src="../../../../assets/images/29b506f7-1c72-4bf4-a5cd-166c8ac9659b-112f4d8ebc55.jpg" alt="">
+              <div class="contents">
+                <div class="text">
+                  <h4>MAGUFULI</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </section>
+
+  </section>
+</section>

@@ -3,7 +3,7 @@ import {Title} from '@angular/platform-browser';
 import {HttpService} from '../../providers/http.service';
 import {FormBuilder, Validators} from '@angular/forms';
 import {UsersModel} from '../../models/Users.model';
-import * as $ from 'jquery';
+import {AuthService} from '../../providers/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -24,11 +24,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private titleService: Title,
     private httpService: HttpService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle('Login -ATALAKU');
+    this.titleService.setTitle('Login - ATALAKU');
   }
 
   authenticate(e) {
@@ -37,12 +38,16 @@ export class LoginComponent implements OnInit {
     this.httpService.getUserByEmail(this.loginForm.get('email').value)
       .subscribe((data: UsersModel) => {
         // authenticate user
-        console.log(data);
         if (!data) {
+          // if username was not found
           this.setError('Account does not exist!');
         } else {
+          // if passwords do not match
           if (data.password !== this.loginForm.get('password').value) {
             this.setError('Password incorrect!');
+          } else {
+            // authenticate user...
+            this.auth.authenticateUser(data);
           }
         }
       }, error1 => {

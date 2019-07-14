@@ -71,6 +71,10 @@ export class HttpService {
   getMovie(id) {
     return this.http.get(`${HttpService.baseUrl}/movies/${id}`);
   }
+  // update user
+  updateUser(id, data) {
+    return this.http.put(`${HttpService.baseUrl}/users/${id}`, data, {headers: this.httpOptions});
+  }
   /**
    * @method handleError
    * @summary handle all http clients errors!

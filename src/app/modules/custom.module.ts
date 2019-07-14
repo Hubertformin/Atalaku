@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {TimeAgoPipe} from '../pipes/time-ago.pipe';
+
 import {
   MatMenuModule,
   MatInputModule,
@@ -20,7 +22,7 @@ import {
 } from '@angular/material';
 
 @NgModule({
-  declarations: [],
+  declarations: [TimeAgoPipe],
   imports: [
     CommonModule,
     MatMenuModule,
@@ -63,7 +65,8 @@ import {
     MatRadioModule,
     MatListModule,
     MatSliderModule,
-    MatListModule
+    MatListModule,
+    TimeAgoPipe
   ]
 })
 export class CustomModule { }

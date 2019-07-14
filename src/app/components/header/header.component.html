@@ -2,16 +2,37 @@
   <ul>
     <li class="brand_name"><a href="/"><img src="../assets/images/logo.png" alt="logo"> Atalaku</a></li>
     <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-    <li><a routerLink="/music" routerLinkActive="active">Music</a></li>
+    <li class="dropdown-container">
+      <a routerLink="/music" routerLinkActive="active">Music</a>
+      <div class="dropdown">
+        <ul>
+          <li><a href="/">Afro Beats</a></li>
+          <li><a href="/">Rap</a></li>
+          <li><a href="/">Beats</a></li>
+          <li><a href="/">Afro</a></li>
+        </ul>
+      </div>
+    </li>
     <li><a routerLink="/movies" routerLinkActive="active">Movies</a></li>
     <li><a routerLink="/music-videos" routerLinkActive="active">Videos</a></li>
     <li><a routerLink="/documentary" routerLinkActive="active">Documentaries</a></li>
   </ul>
-  <ul class="pull-right">
+  <ul *ngIf="!authService.isAuthenticated()" class="pull-right">
     <!--<li>-->
       <!--<input class="rounded-full border p-2" placeholder="search.." type="search" id="global_search_input" />-->
     <!--</li>-->
     <li><a routerLink="/subscription/month" routerLinkActive="active">Register</a></li>
     <li><a routerLink="/login" routerLinkActive="active">Sign in</a></li>
+  </ul>
+  <ul *ngIf="authService.isAuthenticated()" class="pull-right">
+    <li class="dropdown-container">
+      <a routerLink="/account" routerLinkActive="active">{{authService.userData.username}}&nbsp;<span><fa-icon [icon]="dropIcon"></fa-icon></span></a>
+      <div class="dropdown">
+        <ul>
+          <li><a routerLink="/account">Account</a></li>
+          <li><a href="javascript:void(0)" (click)="logOut()">Log out</a></li>
+        </ul>
+      </div>
+    </li>
   </ul>
 </nav>

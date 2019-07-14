@@ -11,7 +11,6 @@ import { NgxEditorModule } from 'ngx-editor';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomModule } from '../modules/custom.module';
-import { AdminComponent } from './admin.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { MoviesDashboardComponent } from './movies-dashboard/movies-dashboard.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
@@ -27,13 +26,11 @@ import { UsersDashboardComponent } from './users-dashboard/users-dashboard.compo
 import { ServicesComponent } from './services/services.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GenresComponent } from './genres/genres.component';
-import {TimeAgoPipe} from '../pipes/time-ago.pipe';
 
 @NgModule({
   declarations: [
     AuthenticationComponent,
     DashboardComponent,
-    AdminComponent,
     NavigationComponent,
     MoviesDashboardComponent,
     AddMovieComponent,
@@ -49,8 +46,8 @@ import {TimeAgoPipe} from '../pipes/time-ago.pipe';
     ServicesComponent,
     SettingsComponent,
     GenresComponent,
-    TimeAgoPipe
   ],
+  exports: [],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -16,6 +16,7 @@ import {SelectedAlbumComponent} from './views/music/selected-album/selected-albu
 import {WatchVideoComponent} from './views/videos/watch-video/watch-video.component';
 import {WatchDocumentaryComponent} from './views/documentary/watch-documentary/watch-documentary.component';
 import { AuthGuardService as AuthGuard } from './providers/auth-guard.service';
+import {AccountComponent} from './views/account/account.component';
 
 const routes: Routes = [
   {
@@ -24,12 +25,22 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule)
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'subscription/:plan',
     component: SubscriptionComponent
   },
   {
     path: 'movies/watch/:id',
-    component: WatchMovieComponent
+    component: WatchMovieComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'music',
@@ -38,39 +49,48 @@ const routes: Routes = [
   },
   {
     path: 'music/new',
-    component: NewMusicComponent
+    component: NewMusicComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'music/trending',
-    component: TrendingMusicComponent
+    component: TrendingMusicComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'music/albums',
-    component: AlbumsComponent
+    component: AlbumsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'music/albums/:id',
-    component: SelectedAlbumComponent
+    component: SelectedAlbumComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'movies',
-    component: MoviesComponent
+    component: MoviesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'music-videos',
-    component: VideosComponent
+    component: VideosComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'music-videos/watch/:id',
-    component: WatchVideoComponent
+    component: WatchVideoComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'documentary',
-    component: DocumentaryComponent
+    component: DocumentaryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'documentary/watch/:id',
-    component: WatchDocumentaryComponent
+    component: WatchDocumentaryComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

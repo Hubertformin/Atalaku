@@ -33,6 +33,7 @@ import { SelectedAlbumComponent } from './views/music/selected-album/selected-al
 import { WatchVideoComponent } from './views/videos/watch-video/watch-video.component';
 import { VideoSearchBarComponent } from './views/videos/video-search-bar/video-search-bar.component';
 import { WatchDocumentaryComponent } from './views/documentary/watch-documentary/watch-documentary.component';
+import { AccountComponent } from './views/account/account.component';
 
 @NgModule({
   declarations: [
@@ -56,11 +57,11 @@ import { WatchDocumentaryComponent } from './views/documentary/watch-documentary
     WatchVideoComponent,
     VideoSearchBarComponent,
     WatchDocumentaryComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
-    AdminModule,
     CustomModule,
     CarouselModule,
     NgxAudioPlayerModule,

@@ -6,7 +6,7 @@
     <h2>Music dashboard</h2>
   </div>
   <div class="action text-right">
-    <a routerLink="/admin/add-music" class="bg-red hover:bg-red-dark text-white" mat-raised-button>Add music</a>
+    <a routerLink="/admin/music/new" class="bg-red hover:bg-red-dark text-white" mat-raised-button>Add music</a>
   </div>
   <div class="body">
     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
@@ -27,8 +27,8 @@
           <td><img class="rounded-full" src="../../../assets/images/magufuli.jpeg" height="40" width="40" alt="logo"></td>
           <td>{{music.title}}</td>
           <td>{{music.artist}}</td>
-          <td>{{music.album}}</td>
-          <td>{{music.genre}}</td>
+          <td>{{music.album.name}}</td>
+          <td>{{music.genre.name}}</td>
           <td>{{music.views}}</td>
           <td>{{music.likes}}</td>
           <td>{{music.year}}</td>

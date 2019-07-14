@@ -22,7 +22,7 @@ nav {
     li {
       height: 100%;
       display: inline-block;
-      padding: 0 15px;
+      padding: 0 1.5rem;
       line-height: 50px;
 
       &.brand_name {
@@ -61,6 +61,50 @@ nav {
           //  border-bottom: 4px solid $accent-color;
           //  transform-origin: center;
           //}
+        }
+      }
+    }
+  }
+}
+
+// dropdown
+.dropdown-container {
+  position: relative;
+  &:hover .dropdown {
+    display: block;
+  }
+  .dropdown {
+    display: none;
+    width: 140px;
+    position: absolute;
+    z-index: 999;
+    height: auto;
+    background-color: #ffffff;
+    // box-shadow: 0 6px 26px rgba(0, 0, 0, 0.6);
+    top: 54px;
+    left: 1rem;
+    border: 1px solid #dddddd;
+    ul {
+      list-style-type: none;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      li {
+        padding: 0;
+        display: block;
+        width: 100%;
+        a {
+          text-align: left;
+          display: block;
+          border-bottom: 1px dashed #dddddd;
+          padding: 1px 10px;
+          &:hover {
+            background-color: #e3342f;
+            color: #ffffff;
+          }
+          &:last-of-type {
+            border: none;
+          }
         }
       }
     }

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {AdminComponent} from './admin.component';
 import {MoviesDashboardComponent} from './movies-dashboard/movies-dashboard.component';
 import {AddMovieComponent} from './add-movie/add-movie.component';
 import {MusicDashboardComponent} from './music-dashboard/music-dashboard.component';
@@ -17,30 +16,29 @@ import {UsersDashboardComponent} from './users-dashboard/users-dashboard.compone
 import {ServicesComponent} from './services/services.component';
 import {SettingsComponent} from './settings/settings.component';
 import {GenresComponent} from './genres/genres.component';
+import {AdminAuthGuardService} from '../providers/admin-auth-guard.service';
 
 const routes: Routes = [
   {
-    path: 'admin',
-    component: AdminComponent,
-    children: [
-      {path: 'login', component: AuthenticationComponent},
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'movies-dashboard', component: MoviesDashboardComponent},
-      {path: 'genres', component: GenresComponent},
-      {path: 'add-movie', component: AddMovieComponent},
-      {path: 'add-music', component: AddMusicComponent},
-      {path: 'add-music-video', component: AddMusicVideoComponent},
-      {path: 'music-dashboard', component: MusicDashboardComponent},
-      {path: 'music-video-dashboard', component: MusicVideosComponent},
-      {path: 'users-dashboard', component: UsersDashboardComponent},
-      {path: 'messaging', component: MessagingComponent},
-      {path: 'staff', component: StaffComponent},
-      {path: 'front-end', component: FrontEndComponent},
-      {path: 'blog', component: BlogDashboardComponent},
-      {path: 'services', component: ServicesComponent},
-      {path: 'settings', component: SettingsComponent}
-    ]
-  }
+    path: '',
+    redirectTo: 'dashboard'
+  },
+  {path: 'login', component: AuthenticationComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'movies', component: MoviesDashboardComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'genres', component: GenresComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'movie/new', component: AddMovieComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'music/new', component: AddMusicComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'music-videos/new', component: AddMusicVideoComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'music', component: MusicDashboardComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'music-videos', component: MusicVideosComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'users', component: UsersDashboardComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'messaging', component: MessagingComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'staff', component: StaffComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'front-end', component: FrontEndComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'blog', component: BlogDashboardComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'services', component: ServicesComponent, canActivate: [AdminAuthGuardService]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AdminAuthGuardService]}
 ];
 
 @NgModule({

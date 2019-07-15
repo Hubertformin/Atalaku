@@ -1,0 +1,45 @@
+<section>
+  <app-header></app-header>
+</section>
+<section id="view">
+  <section class="header bg-red">
+    <div class="row">
+      <div class="col-sm-2">
+        <p class="img"></p>
+      </div>
+      <div class="col-sm-10">
+        <h1 class="album_title">{{album.name}}</h1>
+        <h3><small>{{album.artist}}</small>&nbsp;<span>&diams;</span>&nbsp;<small>{{album.year}}</small></h3>
+      </div>
+    </div>
+  </section>
+  <!--body-->
+  <section id="body" class="py-3 px-6 row">
+    <div class="col-sm-8 border-r">
+      <h5 class="border-b py-2 font-bold text-grey-dark">Tracks</h5>
+      <div class="track-list-container py-5">
+        <div class="list-item border-b py-2 my-1 relative" *ngFor="let track of album.songs; let i = index;">
+          <h4 class="text-sm">{{track.title}}</h4>
+          <p><small>{{track.album_artist}} ft {{track.artist}}</small></p>
+          <button mat-button style="position: absolute;right: 0;top: 0.6rem;"><fa-icon [icon]="playIcon"></fa-icon></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h5 class="border-b py-2 font-bold text-grey-dark">Videos</h5>
+      <div class="list-container py-5">
+        <div class="list-item border-b" *ngFor="let video of album.videos;let i = index;">
+          <div class="row">
+            <div class="col-sm-4" style="padding-left: 0;">
+              <p class="w-full h-16 bg-grey-dark"></p>
+            </div>
+            <div class="col-sm-8" style="padding-left: 0;">
+              <h4 class="text-sm">{{video.title}}</h4>
+              <p><small>{{video.album_artist}} ft {{video.artist}}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

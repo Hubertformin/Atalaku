@@ -1,0 +1,16 @@
+#body_view {
+  padding: 10px 2.5rem 10px 0;
+  height: calc(100% - 50px);
+  margin-top: 50px;
+  overflow-y: auto;
+}
+
+#video {
+  width: 700px;
+  height: 400px;
+  background-color: #000000;
+}
+
+.mat-form-field {
+  width: 100% !important;
+}

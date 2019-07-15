@@ -3,6 +3,9 @@ import { FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Title} from '@angular/platform-browser';
 import {NotifierService} from 'angular-notifier';
+import {HttpService} from '../../providers/http.service';
+import {AdminAuthService} from '../../providers/admin-auth.service';
+import {ngxLoadingAnimationTypes} from 'ngx-loading';
 
 @Component({
   selector: 'app-authentication',
@@ -15,16 +18,26 @@ export class AuthenticationComponent implements OnInit {
     username: [null, Validators.required],
     password: [null, Validators.required]
   });
+  loading: boolean;
+  private animationType;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
     private titleService: Title,
-    private notifierService: NotifierService
+    private notifierService: NotifierService,
+    private httpService: HttpService,
+    private adminAuthService: AdminAuthService
   ) { }
 
   ngOnInit() {
-    this.titleService.setTitle('Login - ATALAKU(Admin)');
+    this.titleService.setTitle('Login - ATALAKU (Admin)');
+    this.loading = true;
+    this.animationType = ngxLoadingAnimationTypes.threeBounce;
+    // get admin data
+    this.httpService.staff.subscribe((data) => {
+      console.log(data);
+    });
   }
   // Getters of form field parameters to be used for validation
   get username() {
@@ -43,11 +56,6 @@ export class AuthenticationComponent implements OnInit {
     if (this.username.invalid || this.password.invalid) {
       this.notifierService.notify('error', 'Insert valid username and password!');
       return;
-    }
-    // submitting form
-    if (window.sessionStorage) {
-      window.sessionStorage.setItem('user', JSON.stringify({username: this.username.value, password: this.password.value}));
-      this.route.navigate(['/admin/dashboard']);
     }
   }
 

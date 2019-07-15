@@ -75,6 +75,13 @@ export class HttpService {
   updateUser(id, data) {
     return this.http.put(`${HttpService.baseUrl}/users/${id}`, data, {headers: this.httpOptions});
   }
+  // get administrator
+  get staff() {
+    return this.http.get(`${HttpService.baseUrl}/admins`);
+  }
+  getAdminByName(name: string) {
+    return this.http.get('');
+  }
   /**
    * @method handleError
    * @summary handle all http clients errors!

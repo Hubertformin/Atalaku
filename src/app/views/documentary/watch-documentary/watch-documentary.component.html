@@ -1,0 +1,63 @@
+<section>
+  <app-header></app-header>
+</section>
+<section id="view">
+  <app-video-search-bar></app-video-search-bar>
+  <div id="body_view" class="row">
+    <div class="col-sm-4 h-full pb-8">
+      <p class="py-2 px-1 border-b">
+        Up next
+      </p>
+      <div class="column pt-3">
+        <div class="playlist_item" *ngFor="let i of iter">
+          <div class="row pb-2 mb-2">
+            <div class="col-sm-4" style="padding:0;">
+              <p class="thumbnail w-full h-full bg-black h-16 rounded"></p>
+            </div>
+            <div class="col-sm-8">
+              <p><strong>Magaguli</strong></p>
+              <p><small>Wax Dey ft Locko</small></p>
+              <p><small>2019</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 h-full pb-8">
+      <div id="player">
+        <div id="video_container">
+          <div id="video"></div>
+        </div>
+        <div id="video_details_container" class="pt-2 px-3 pb-6 border-b mb-10">
+          <h1 class="title">The creation of cameroon as a whole</h1>
+          <p class="artist">Cameroon archives</p>
+          <p><small>Jul 3, 2019</small></p>
+          <p class="mt-8 relative pl-10" style="height: 37px;line-height: 37px;">
+            <img style="left:0;top:0;" class="inline absolute" src="../../../../assets/images/logo.png" alt="logo" height="35" width="35">
+            <span class="text inline">ATALAKU&nbsp;</span>
+            <span class="text-green-dark inline"><fa-icon [icon]="checkIcon"></fa-icon></span>
+          </p>
+        </div>
+      </div>
+      <div id="comments" class="pt-2 px-2 pb-32">
+        <div id="create_comment" class="mb-6">
+          <mat-form-field>
+            <input type="text" placeholder="Type comment" matInput>
+            <button mat-button matSuffix><fa-icon [icon]="sendIcon" size="2x"></fa-icon></button>
+          </mat-form-field>
+        </div>
+        <div id="comment_list" class="pl-10">
+          <div *ngFor="let i of iter" class="comment-item border-b border-dashed mb-6 py-3">
+            <div class="w-16 inline-block">
+              <img class="w-10 h-10 rounded-full" src="../../../../assets/images/user_icon.png" alt="user_icon">
+            </div>
+            <div class="w-3/4 inline-block">
+              <p><small><strong>Achmed</strong></small></p>
+              <p class="whitespace-no-wrap w-full overflow-x-hidden" style="text-overflow:ellipsis;">This video is freaking aswesom..</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

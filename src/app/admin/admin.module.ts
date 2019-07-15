@@ -6,7 +6,7 @@ import { DataTablesModule } from 'angular-datatables';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NotifierModule } from 'angular-notifier';
-import { NgxEditorModule } from 'ngx-editor';
+import {ngxLoadingAnimationTypes, NgxLoadingModule} from 'ngx-loading';
 
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -56,7 +56,6 @@ import { GenresComponent } from './genres/genres.component';
     ReactiveFormsModule,
     FontAwesomeModule,
     DataTablesModule,
-    NgxEditorModule,
     NotifierModule.withConfig({
       theme: 'material',
       position: {
@@ -76,6 +75,14 @@ import { GenresComponent } from './genres/genres.component';
         showDismissButton: true,
         stacking: 4
       }
+    }),
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.circleSwish,
+      backdropBackgroundColour: 'rgba(255,255,255,0.6)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#3ebe57',
+      secondaryColour: '#cb0e02',
+      tertiaryColour: '#ffee35'
     })
   ]
 })

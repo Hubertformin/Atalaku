@@ -1,0 +1,33 @@
+<section>
+  <app-header></app-header>
+</section>
+<section id="view">
+  <!--header-->
+  <section id="list-header">
+    <div class="text">
+      <h2>Top grossing album</h2>
+    </div>
+  </section>
+  <div id="list-body">
+    <h4 class="py-3 px-4 text-grey-dark border-b mb-3"><small>Top grossing albums</small></h4>
+    <div id="list-container" class="row">
+      <div *ngFor="let album of albumData;let i = index;" class="box col-sm-3">
+        <a [routerLink]="album.url">
+          <div class="card">
+            <img src="../../../../assets/images/magufuli.jpeg" alt="">
+            <div class="contents">
+              <div class="text">
+                <h5 class="album_name">{{album.name}}</h5>
+                <p class="album_artist"><small>{{album.artist}}</small> <small>{{album.year}}</small></p>
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+    </div>
+  </div>
+  <!--audio player-->
+  <div class="player" *ngIf="false">
+    <app-audio-player [playList]="playList" (stateChange)="watchState($event)" theme="dark"></app-audio-player>
+  </div>
+</section>

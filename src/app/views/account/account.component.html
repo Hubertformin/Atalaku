@@ -1,0 +1,90 @@
+<section>
+  <app-header></app-header>
+</section>
+<section id="view" class="row">
+  <div class="col-sm-3 py-3 pb-10">
+    <mat-card>
+      <p><small class="text-red">Activity</small></p>
+      <p><strong>Last updated:</strong> {{userData.updatedAt | timeAgo | titlecase}}</p>
+    </mat-card>
+  </div>
+  <div class="col-sm-9 py-5 border-l">
+    <form action="#" class="row" [formGroup]="accountForm">
+      <div class="col-sm-12 py-3">
+        <h3 class="text-red">Personal <button type="button" (click)="updateUser()" class="float-right bg-red-dark text-white" mat-raised-button>save</button></h3>
+      </div>
+      <div class="col-sm-6">
+        <div class="mt-5">
+          <mat-form-field floatLabel="always">
+            <mat-label>Username</mat-label>
+            <input type="text" placeholder="username" formControlName="username" matInput />
+            <mat-hint *ngIf="(username.touched || username.dirty) && username.invalid"><p class="text-red">Invalid username</p></mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="mt-5">
+          <mat-form-field floatLabel="always">
+            <mat-label>Email</mat-label>
+            <input type="text" placeholder="email" formControlName="email" matInput />
+            <mat-hint *ngIf="(email.touched || email.dirty) && email.invalid"><p class="text-red">Invalid email</p></mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="mt-5">
+          <mat-form-field floatLabel="always">
+            <mat-label>Phone number</mat-label>
+            <input type="number" placeholder="phone number" formControlName="tel" matInput />
+            <mat-hint *ngIf="(tel.touched || tel.dirty) && tel.invalid"><p class="text-red">Invalid phone number</p></mat-hint>
+          </mat-form-field>
+        </div>
+        <div>
+        </div>
+      </div>
+<!--        change password-->
+      <div class="mt-5 col-sm-12 py-2 border-t border-b">
+        <button *ngIf="!changePasswordState" (click)="changePasswordState = true" mat-raised-button color="accent">Change password</button>
+        <button *ngIf="changePasswordState" (click)="changePasswordState = false" mat-raised-button class="bg-grey-dark text-white">Hide</button>
+        <div class="row py-3" *ngIf="changePasswordState">
+          <div class="col-sm-4">
+            <mat-form-field>
+              <mat-label>Old Password</mat-label>
+              <input type="password" placeholder="Old password" formControlName="old_password" matInput/>
+              <mat-hint *ngIf="old_password.touched && old_password.value !== userData.password"><p class="text-red">Incorrect old password</p></mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field>
+              <mat-label>New password</mat-label>
+              <input type="password" placeholder="New password" formControlName="new_password" matInput/>
+              <mat-hint *ngIf="(password.touched || password.dirty) && password.invalid"><p class="text-red">Invalid password</p></mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="col-sm-4">
+            <mat-form-field>
+              <mat-label>Confirm new password</mat-label>
+              <input type="password" placeholder="Confirm new password" formControlName="confirm_password" matInput />
+              <mat-hint *ngIf="(confirm_password.touched || confirm_password.dirty) && (new_password.value !== confirm_password.value)"><p class="text-red">Passwords do not match</p></mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+<!--      subscription-->
+      <div class="col-sm-12 py-3">
+        <h3 class="text-red">Subscription</h3>
+      </div>
+      <div class="col-sm-6">
+        <mat-card class="bg-pink-darkest px-3 text-white">
+          <mat-card-actions>
+            <mat-card-content>
+              <h4 class="text-red">{{userData.subscription.plan}}</h4>
+              <h2>{{userData.subscription.amount | currency: "FCFA "}}</h2>
+              <p><small>{{userData.subscription.frequency}}</small></p>
+              <p><strong>Subscription expires {{userData.expiryDate | timeAgo}}</strong></p>
+            </mat-card-content>
+            <button mat-button class="bg-red-dark">Cancel subscription</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </form>
+  </div>
+</section>

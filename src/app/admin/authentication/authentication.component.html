@@ -6,6 +6,7 @@
         <h3 class="text-red-dark text-center my-3">ATALAKU<small style="font-size: 0.5rem;">Admin</small></h3>
       </div>
       <div class="relative">
+        <p *ngIf="formError.status" class="my-2 mx-auto bg-red-lightest border-red rounded text-red-dark px-4 py-1 text-sm">{{formError.message}}</p>
         <ngx-loading [show]="loading" [config]="{ animationType: animationType, backdropBorderRadius: '3px' ,backdropBackgroundColour: 'rgba(255,255,255,0.6)', backdropBorderRadius: '4px', primaryColour: '#3ebe57', secondaryColour: '#cb0e02', tertiaryColour: '#ffee35'}"></ngx-loading>
         <div class="mb-4">
           <label [ngClass]="{'text-red': username.invalid && (username.dirty || username.touched), 'text-green': username.valid}" class="block text-grey-darker text-sm font-bold mb-2" for="username">
@@ -21,7 +22,7 @@
           </label>
           <input [ngClass]="{'border-red': password.invalid && (password.dirty || password.touched), 'bg-red-lightest': password.invalid && (password.dirty || password.touched), 'border-green': password.valid, 'bg-green-lightest': password.valid}" formControlName="password"
                  class="bg-grey-lightest appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none" id="password" type="password" placeholder="******************">
-          <p *ngIf="password.invalid && (password.dirty)" class="text-red text-xs italic">Please insert a valid password password.</p>
+          <p *ngIf="password.invalid && (password.dirty)" class="text-red text-xs italic">Please insert a valid password.</p>
         </div>
         <div class="flex items-center justify-center">
           <button id="submitBtn" class="bg-red-dark hover:bg-red-darker text-white font-bold py-2 px-6 rounded-full focus:shadow-outline" type="submit">

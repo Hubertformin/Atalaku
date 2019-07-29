@@ -12,31 +12,37 @@
             <p class="text-center"><img src="../../../assets/images/creditcard.png" style="width: 28%;padding: 10px 0;"></p>
             <form action="#">
               <div class="input-field">
-                <input type="text" placeholder="Email address" />
+                <mat-form-field>
+                  <input type="text" placeholder="Email address" matInput />
+                </mat-form-field>
               </div>
               <div class="input-field">
-                <input type="text" placeholder="Name on card" />
+                <mat-form-field>
+                  <input type="text" placeholder="Name on card" matInput />
+                </mat-form-field>
               </div>
               <div class="row">
                 <div class="col-sm-9">
-                  <div class="input-field">
-                    <input type="number" placeholder="Card number" />
-                  </div>
+                  <mat-form-field>
+                    <input type="number" placeholder="Card number" matInput />
+                  </mat-form-field>
                 </div>
                 <div class="col-sm-3" style="padding-left: 0px;">
-                  <div class="input-field">
-                    <input type="number" maxlength="3" minlength="3" placeholder="CCV" />
-                  </div>
+                  <mat-form-field>
+                    <input type="number" maxlength="3" minlength="3" placeholder="CCV" matInput />
+                  </mat-form-field>
                 </div>
               </div>
 
               <div class="row">
-                <div class="col-sm-6" style="padding-right: 0;">
-                  <div class="input-field group">
-                    <input type="number" placeholder="MM">
-                    <span class="divider">/</span>
-                    <input type="number" placeholder="YY">
-                  </div>
+                <div class="" style="padding-right: 0;">
+                  <mat-form-field class="group">
+                    <input type="number" placeholder="MM" matInput>
+                    <span matSuffix>/</span>
+                  </mat-form-field>
+                  <mat-form-field class="group">
+                    <input type="number" placeholder="YY"matInput>
+                  </mat-form-field>
                 </div>
               </div>
               <div class="foot p-3">

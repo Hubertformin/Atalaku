@@ -34,6 +34,8 @@ import { WatchVideoComponent } from './views/videos/watch-video/watch-video.comp
 import { VideoSearchBarComponent } from './views/videos/video-search-bar/video-search-bar.component';
 import { WatchDocumentaryComponent } from './views/documentary/watch-documentary/watch-documentary.component';
 import { AccountComponent } from './views/account/account.component';
+import {StoreModule} from '@ngrx/store';
+import { activeUserReducer } from './state/reducers/app.reducer';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,10 @@ import { AccountComponent } from './views/account/account.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({
+      activeUser: activeUserReducer
+    })
   ],
   providers: [
     {provide: 'isBrowser', useValue: true}

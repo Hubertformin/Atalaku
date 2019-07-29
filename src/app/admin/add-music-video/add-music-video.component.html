@@ -3,35 +3,35 @@
 </section>
 <section class="detailed-pane px-8">
   <h2 class="text-red my-3 py-3"><button (click)="gotBack()" mat-button>< Back</button>Add music video.</h2>
-  <div class="row">
+  <div class="row" [formGroup]="addMusicForm">
     <div class="col-sm-4 border-r">
       <mat-form-field>
         <mat-label>Title</mat-label>
-        <input type="text" matInput placeholder="Title">
+        <input type="text" matInput placeholder="Title" formControlName="title" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Artist(s)</mat-label>
-        <input type="text" matInput placeholder="Artist">
+        <input type="text" matInput placeholder="Artist" formControlName="artist" />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Genre</mat-label>
-        <mat-select multiple>
+        <mat-select multiple formControlName="genre">
           <mat-option value="Afro">Afro</mat-option>
           <mat-option value="Afro">HipHop /Rap</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Year</mat-label>
-        <input type="number" matInput placeholder="Year">
+        <input type="number" matInput placeholder="Year" formControlName="year">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Album artist</mat-label>
-        <input type="text" matInput placeholder="Album artist">
+        <input type="text" matInput placeholder="Album artist" formControlName="album_artist">
       </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Description</mat-label>
-        <textarea id="description" cols="7" placeholder="Description / memo" matInput></textarea>
-      </mat-form-field>
+<!--      <mat-form-field appearance="outline">-->
+<!--        <mat-label>Description</mat-label>-->
+<!--        <textarea id="description" cols="7" placeholder="Description / memo" matInput formControlName="description"></textarea>-->
+<!--      </mat-form-field>-->
     </div>
     <div class="col-sm-8">
       <h3 class="text-red-dark my-3">Upload media</h3>

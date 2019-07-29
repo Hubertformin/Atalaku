@@ -55,7 +55,7 @@ export class AdminAuthService {
     return !this.isTokenExpired();
   }
   // Authenticate admin
-  public authenticateUser(username: string, password: string, token) {
+  public authenticate(token) {
     this.encodeToken(token);
     this._adminData = token;
     // redirect user to homepage or to specific direction
@@ -63,13 +63,13 @@ export class AdminAuthService {
       this.router.navigate([sessionStorage.getItem('r_artt')]);
       sessionStorage.removeItem('r_artt');
     } else {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/admin/dashboard']);
     }
   }
   // log out
   public logOutUser() {
-    sessionStorage.removeItem('AAU');
+    sessionStorage.removeItem('aaux=');
     // redirect user to homepage
-    this.router.navigate(['/']);
+    this.router.navigate(['/admin/login']);
   }
 }

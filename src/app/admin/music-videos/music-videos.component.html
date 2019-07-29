@@ -6,7 +6,7 @@
     <h2>Video Music dashboard</h2>
   </div>
   <div class="action p-3 text-right">
-    <a routerLink="/admin/add-music-video" class="bg-blue-dark text-white" mat-raised-button>Add music</a>
+    <a routerLink="/admin/music-videos/new" class="bg-blue-dark text-white" mat-raised-button>Add music</a>
   </div>
   <div class="body border-t">
     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
@@ -27,7 +27,7 @@
         <td><img class="rounded-full" src="../../../assets/images/mboko.jpeg" height="36" width="36" alt="logo"></td>
         <td>{{music.title}}</td>
         <td>{{music.artist}}</td>
-        <td>{{music.genre}}</td>
+        <td>{{music.genre.name}}</td>
         <td>{{music.views}}</td>
         <td>{{music.likes}}</td>
         <td>{{music.year}}</td>

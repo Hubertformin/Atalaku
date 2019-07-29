@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     console.log('sending request...');
     this.httpService.getUserByEmail(this.loginForm.get('email').value)
       .subscribe((data: UsersModel) => {
+        console.log(data);
         // authenticate user
         if (!data) {
           // if username was not found

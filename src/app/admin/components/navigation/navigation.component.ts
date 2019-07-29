@@ -9,6 +9,7 @@ import {
   faBlog,
   faVideo, faCalendar, faCompactDisc, faUserLock, faWallet, faCalculator
 } from '@fortawesome/free-solid-svg-icons';
+import {AdminAuthService} from '../../../providers/admin-auth.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -29,9 +30,10 @@ export class NavigationComponent implements OnInit {
   frontendIcon = faTv;
   servicesIcon = faWallet;
 
-  constructor() { }
+  constructor(private authService: AdminAuthService) { }
 
   ngOnInit() {
+    console.log(this.authService.adminData);
   }
 
 }

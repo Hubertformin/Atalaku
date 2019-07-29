@@ -28,9 +28,6 @@ export class HttpService {
   // get user
   getUserByEmail(email: string) {
     return this.http.get(`${HttpService.baseUrl}/users/email/${email}`, {headers: this.httpOptions, params: {['offset']: '2', ['limit']: '2'}})
-      .pipe(
-        catchError(this.handleError)
-      );
   }
   // get all users
   getAllUsers() {
@@ -76,11 +73,19 @@ export class HttpService {
     return this.http.put(`${HttpService.baseUrl}/users/${id}`, data, {headers: this.httpOptions});
   }
   // get administrator
-  get staff() {
+  get getAdmins() {
     return this.http.get(`${HttpService.baseUrl}/admins`);
   }
-  getAdminByName(name: string) {
-    return this.http.get('');
+  getAdminByName(username: string) {
+    return this.http.get(`${HttpService.baseUrl}/admins/username/${username}`);
+  }
+  //create administrator
+  createAdmin(data) {}
+  /**
+   * @methods Music methods
+   * */
+  addMusicVideo(data) {
+    return this.http.post(`${HttpService.baseUrl}/music-videos`, data, {headers: this.httpOptions});
   }
   /**
    * @method handleError

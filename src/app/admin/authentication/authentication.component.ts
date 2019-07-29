@@ -7,6 +7,11 @@ import {HttpService} from '../../providers/http.service';
 import {AdminAuthService} from '../../providers/admin-auth.service';
 import {ngxLoadingAnimationTypes} from 'ngx-loading';
 
+interface AuthError {
+  status: boolean;
+  message: string;
+}
+
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
@@ -20,6 +25,7 @@ export class AuthenticationComponent implements OnInit {
   });
   loading: boolean;
   private animationType;
+  formError: AuthError;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,12 +38,10 @@ export class AuthenticationComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('Login - ATALAKU (Admin)');
-    this.loading = true;
     this.animationType = ngxLoadingAnimationTypes.threeBounce;
+    this.loading = false;
+    this.formError = {status: false, message: ''};
     // get admin data
-    this.httpService.staff.subscribe((data) => {
-      console.log(data);
-    });
   }
   // Getters of form field parameters to be used for validation
   get username() {
@@ -54,9 +58,23 @@ export class AuthenticationComponent implements OnInit {
   authenticate(e) {
     e.preventDefault();
     if (this.username.invalid || this.password.invalid) {
-      this.notifierService.notify('error', 'Insert valid username and password!');
+      this.notifierService.notify('success', 'Insert valid username and password!');
       return;
     }
+    // start loader
+    this.loading = true;
+    // else authenticate user
+    this.httpService.getAdminByName(this.username.value)
+      .subscribe((data: any[]) => {
+        if (data.length === 0 || data[0].password !== this.password.value) {
+          this.formError.status = true;
+          this.formError.message = 'Wrong username or password';
+          this.loading = false;
+          return;
+        }
+        this.formError.status = false;
+        this.adminAuthService.authenticate(data[0]);
+      });
   }
 
 }

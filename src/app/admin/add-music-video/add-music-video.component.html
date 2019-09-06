@@ -15,9 +15,8 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Genre</mat-label>
-        <mat-select multiple formControlName="genre">
-          <mat-option value="Afro">Afro</mat-option>
-          <mat-option value="Afro">HipHop /Rap</mat-option>
+        <mat-select formControlName="genre">
+          <mat-option *ngFor="let genre of musicGenres;" [value]="genre.id">{{genre.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
@@ -25,8 +24,16 @@
         <input type="number" matInput placeholder="Year" formControlName="year">
       </mat-form-field>
       <mat-form-field>
+        <mat-label>Album</mat-label>
+        <input type="text" matInput placeholder="Album artist" formControlName="album">
+      </mat-form-field>
+      <mat-form-field>
         <mat-label>Album artist</mat-label>
         <input type="text" matInput placeholder="Album artist" formControlName="album_artist">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Duration</mat-label>
+        <input type="number" matInput placeholder="Duration" formControlName="duration">
       </mat-form-field>
 <!--      <mat-form-field appearance="outline">-->
 <!--        <mat-label>Description</mat-label>-->
@@ -48,6 +55,6 @@
     </div>
   </div>
   <div class="text-right p-3">
-    <button mat-raised-button class="bg-red-dark hover:bg-red-darker text-white">Save</button>
+    <button (click)="addMusicVideo()" mat-raised-button class="bg-red-dark hover:bg-red-darker text-white">Save</button>
   </div>
 </section>

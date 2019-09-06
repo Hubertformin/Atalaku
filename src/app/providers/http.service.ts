@@ -73,19 +73,53 @@ export class HttpService {
     return this.http.put(`${HttpService.baseUrl}/users/${id}`, data, {headers: this.httpOptions});
   }
   // get administrator
-  get getAdmins() {
+  getAdmins() {
     return this.http.get(`${HttpService.baseUrl}/admins`);
   }
   getAdminByName(username: string) {
     return this.http.get(`${HttpService.baseUrl}/admins/username/${username}`);
   }
-  //create administrator
-  createAdmin(data) {}
+  // create administrator
+  createAdmin(data) {
+    return this.http.post(`${HttpService.baseUrl}/admins`, data, {headers: this.httpOptions});
+  }
+  // update admin
+  updateAdmin(data) {
+    return this.http.put(`${HttpService.baseUrl}/admins/${data.id}`, data, {headers: this.httpOptions});
+  }
+  // delete stass
+  deleteStaff(id) {
+    return this.http.delete(`${HttpService.baseUrl}/admins/${id}`, {headers: this.httpOptions});
+  }
   /**
    * @methods Music methods
    * */
+  addMusic(data) {
+    return this.http.post(`${HttpService.baseUrl}/music`, data, {headers: this.httpOptions});
+  }
   addMusicVideo(data) {
     return this.http.post(`${HttpService.baseUrl}/music-videos`, data, {headers: this.httpOptions});
+  }
+  /**
+   * @methods Genre methods
+   * */
+  createGenre(data) {
+    data.name = data.name[0].toUpperCase() + data.name.slice(1).toLowerCase();
+    return this.http.post(`${HttpService.baseUrl}/genres`, data, {headers: this.httpOptions});
+  }
+  // get genre
+  getAllGenres() {
+    return this.http.get(`${HttpService.baseUrl}/genres`);
+  }
+  getGenresByType(type) {
+    return this.http.get(`${HttpService.baseUrl}/genres/type/${type}`);
+  }
+  // update genre
+  updateGenre(data) {
+    return this.http.put(`${HttpService.baseUrl}/genres/${data.id}`, data, {headers: this.httpOptions});
+  }
+  deleteGenre(id) {
+    return this.http.delete(`${HttpService.baseUrl}/genres/${id}`, {headers: this.httpOptions});
   }
   /**
    * @method handleError

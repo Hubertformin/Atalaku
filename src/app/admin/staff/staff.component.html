@@ -1,3 +1,4 @@
+
 <section>
   <app-navigation></app-navigation>
 </section>
@@ -45,7 +46,7 @@
   <!--modal-->
   <section class="modal" id="userForm">
     <div class="content-bottom">
-      <form action="#" (submit)="addStaff($event)">
+      <form action="#" (submit)="addEditStaff($event)">
         <div class="header py-6 border-b px-8">
           <h2 class="text-green-darker">Create staff account</h2>
         </div>
@@ -80,7 +81,7 @@
             </div>
             <div class="col-sm-8 h-full overflow-y-auto">
                 <h4 class="text-red">Permissions</h4>
-              <p class="my-3"><mat-checkbox name="sa" (change)="setAllPermissions()">Assign all permissions.</mat-checkbox></p>
+              <p class="my-3"><mat-checkbox name="sa" (change)="setAllPermissions()" [checked]="ALL_PERM_CHECK">Assign all permissions.</mat-checkbox></p>
               <div class="permissions row py-3 border-t">
                <div class="col-sm-12 pt-1 pb-3">
                  <div class="row border-dashed border-b py-1 mb-2">

@@ -8,9 +8,11 @@
       <div class="form">
         <mat-form-field>
           <mat-label>Genre</mat-label>
-          <input type="text" matInput placeholder="Enter genre name">
+          <input type="text" (keyup.enter)="createGenre('music')" matInput placeholder="Enter genre name" [(ngModel)]="musicGenreForm.name" />
         </mat-form-field>
-        <button mat-raised-button matSuffix>+ Add</button>
+        <span class="ml-2">
+          <button (click)="createGenre('music')" mat-raised-button class="bg-red text-white">+ Add</button>
+        </span>
       </div>
       <!--set's -->
       <div class="sets">
@@ -23,10 +25,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Afro</td>
-            <td class="small"><fa-icon [icon]="editIcon"></fa-icon></td>
-            <td class="small"><fa-icon [icon]="deleteIcon"></fa-icon></td>
+          <tr *ngFor="let musicGenre of allMusicGenres;let i = index;">
+            <td>{{musicGenre.name}}</td>
+            <td class="small" (click)="editGenre('music', i)"><fa-icon [icon]="editIcon"></fa-icon></td>
+            <td class="small" (click)="deleteGenre('music', i)"><fa-icon [icon]="deleteIcon"></fa-icon></td>
           </tr>
           </tbody>
         </table>
@@ -40,9 +42,11 @@
       <div class="form">
         <mat-form-field>
           <mat-label>Genre</mat-label>
-          <input type="text" matInput placeholder="Enter genre name">
+          <input type="text" (keyup.enter)="createGenre('movie')" matInput placeholder="Enter genre name" [(ngModel)]="movieGenreForm.name" />
         </mat-form-field>
-        <button mat-raised-button matSuffix>+ Add</button>
+        <span class="ml-2">
+          <button (click)="createGenre('movie')" mat-raised-button class="bg-red text-white">+ Add</button>
+        </span>
       </div>
       <!--set's-->
       <div class="sets">
@@ -55,10 +59,10 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Adventure</td>
-            <td class="small"><fa-icon [icon]="editIcon"></fa-icon></td>
-            <td class="small"><fa-icon [icon]="deleteIcon"></fa-icon></td>
+          <tr *ngFor="let movieGenre of allMoviesGenres;let i = index;">
+            <td>{{movieGenre.name}}</td>
+            <td class="small" (click)="editGenre('movie', i)"><fa-icon [icon]="editIcon"></fa-icon></td>
+            <td class="small" (click)="deleteGenre('movie', i)"><fa-icon [icon]="deleteIcon"></fa-icon></td>
           </tr>
           </tbody>
         </table>
@@ -79,6 +83,22 @@
           <li>Required on creation of movie categories</li>
         </ul>
       </details>
+    </div>
+  </div>
+</section>
+
+<section id="editModal" #modal>
+  <div class="modal-body">
+    <h4 class="text-red mb-4">Update genre</h4>
+    <div class="form border-t border-b py-2 mb-2 px-8">
+      <mat-form-field>
+        <mat-label>Genre new name</mat-label>
+        <input (keyup.enter)="updateGenre()" type="text" [(ngModel)]="updateForm.name" placeholder="Enter genre new name" matInput>
+      </mat-form-field>
+    </div>
+    <div class="form text-right">
+      <button (click)="updateGenre()" class="bg-red text-white" mat-button>Update</button>
+      <span class="ml-2"><button (click)="modal.style.display = 'none'" class="bg-grey text-white" mat-button>cancel</button></span>
     </div>
   </div>
 </section>

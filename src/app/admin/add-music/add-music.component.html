@@ -5,56 +5,56 @@
   <div class="row h-full">
     <div class="col-sm-5 h-full" style="padding-right: 0;">
       <mat-card class="add-music-card h-full" style="padding: 0;">
-        <div class="header border-b">
-          <h4 class="text-red">Create music genre</h4>
-          <div class="row px-3">
-            <div class="col-sm-9">
-              <mat-form-field>
-                <mat-label>Genre</mat-label>
-                <input type="text" placeholder="Genre(ex. Pop, Afro)" matInput />
-              </mat-form-field>
-            </div>
-            <div class="col-sm-3" style="padding: 0;"><button mat-raised-button class="bg-blue-dark text-white">Add</button></div>
-          </div>
-        </div>
+<!--        <div class="header border-b">-->
+<!--          <h4 class="text-red">Create music genre</h4>-->
+<!--          <div class="row px-3">-->
+<!--            <div class="col-sm-9">-->
+<!--              <mat-form-field>-->
+<!--                <mat-label>Genre</mat-label>-->
+<!--                <input type="text" placeholder="Genre(ex. Pop, Afro)" matInput />-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--            <div class="col-sm-3" style="padding: 0;"><button mat-raised-button class="bg-blue-dark text-white">Add</button></div>-->
+<!--          </div>-->
+<!--        </div>-->
         <div class="body px-4">
           <h3 class="text-red">Add Music content</h3>
-          <small>Add music file information or auto detect from uploaded music file.</small>
-          <p class="px-2"><mat-checkbox [(ngModel)]="autoDetectMetaData">Auto detect from file</mat-checkbox></p>
-          <form action="" [hidden]="autoDetectMetaData">
+          <small>Add music file information.</small>
+<!--          <p class="px-2"><mat-checkbox [(ngModel)]="autoDetectMetaData">Auto detect from file</mat-checkbox></p>-->
+          <form action="#" [formGroup]="addMusicForm">
             <mat-form-field>
               <mat-label>Title</mat-label>
-              <input type="text" matInput placeholder="Title">
+              <input type="text" matInput placeholder="Title" formControlName="title">
             </mat-form-field>
             <mat-form-field>
               <mat-label>Artist</mat-label>
-              <input type="text" placeholder="Artist" matInput />
+              <input type="text" placeholder="Artist" matInput formControlName="artist" />
             </mat-form-field>
             <mat-form-field>
               <mat-label>Album</mat-label>
-              <input type="text" placeholder="Album" matInput />
+              <input type="text" placeholder="Album" matInput formControlName="album" />
             </mat-form-field>
             <mat-form-field>
               <mat-label>Year</mat-label>
-              <input type="number" minlength="4" maxlength="4" placeholder="Year(Release)" matInput>
+              <input type="number" minlength="4" maxlength="4" placeholder="Year(Release)" matInput formControlName="year" />
             </mat-form-field>
             <mat-form-field>
               <mat-label>Genre</mat-label>
-              <mat-select multiple>
-                <mat-option value="Afro pop">Afro pop</mat-option>
+              <mat-select formControlName="genre">
+                <mat-option *ngFor="let genre of musicGenres;let i = index;" [value]="genre.id">{{genre.name}}</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field>
               <mat-label>Composer</mat-label>
-              <input type="text" placeholder="Composer" matInput />
+              <input type="text" placeholder="Composer" matInput formControlName="composer" />
             </mat-form-field>
             <mat-form-field>
               <mat-label>Album artist</mat-label>
-              <input type="text" placeholder="Album artist" matInput />
+              <input type="text" placeholder="Album artist" matInput formControlName="album_artist" />
             </mat-form-field>
             <mat-form-field>
               <mat-label>Duration (in mins)</mat-label>
-              <input type="text" placeholder="Duration (in minutes)" matInput />
+              <input type="text" placeholder="Duration (in minutes)" formControlName="duration" matInput />
             </mat-form-field>
           </form>
         </div>
@@ -93,6 +93,10 @@
             <p class="py-2"><mat-progress-bar mode="determinate" value="80"></mat-progress-bar></p>
             <p class="text-right"><button mat-button class="text-white bg-grey-dark">cancel</button></p>
           </div>
+        </div>
+<!--        action-->
+        <div class="action-button text-right border-t pt-3 mt-3">
+          <button (click)="addNewMusic()" class="bg-red text-white" mat-stroked-button>Save</button>
         </div>
       </mat-card>
     </div>
